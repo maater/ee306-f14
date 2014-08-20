@@ -1,0 +1,198 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+
+	<title>Programming assignment submission</title>
+</head><body bgcolor="white">
+
+<center>
+	<h2>Program Submission Instructions</h2>
+	<h4>Fall 2013</h4>
+
+</center>
+<hr/>
+
+<h4>We will not accept email submissions. If you email a TA or Professor Patt
+	your Programming Assignment, the TA/Professor Patt will delete your email
+	and ignore your submission. You will receive a zero on the Programming
+	Assignment. Learn how to submit your program early so this does not happen
+	to you.</h4>
+
+<h4>You must ensure you name your programs exactly as described for each
+	Programming Assignment. Otherwise, you will receive a zero on the
+	Programming Assignment.</h4>
+
+<p>
+To submit your programs for this class, you will be using a version control
+tool called Subversion, or SVN for short. TortoiseSVN is a tool for Windows
+systems that allows you to submit your programs to the Subversion repository
+where the instructors will be able to view and grade your submission.
+</p>
+
+<p>
+There are two options for submission available to you. You can either download
+and install TortoiseSVN on your Windows machine, or <b>or you can use the Windows machines in ENS 507  (open Mon-Fri 9am to 9pm) and ENS 307 (open 24 hours a day), which have TortoiseSVN already installed for you</b>.
+</p>
+
+<p>
+There are four steps outlined below: installing TortoiseSVN, setting up your
+submission directory, updating your submission directory, and submitting your
+program.  Installing TortoiseSVN (only necessary if using your own Windows
+machine) only needs to be done once. Setting up your submission directory only
+needs to be done once. Both updating your submission directory and submitting
+your program need to be done <b>for every programming assignment you
+	submit.</b>
+</p>
+
+<p><b>To collect your grade report for each lab,</b> follow the "Updating Your
+Submission Directory" step. Once grades are available, a result file will
+appear in the appropriate Project directory (e.g., project1) when you follow
+these steps.</p>
+
+<p>
+Finally, if you encounter issues during submission, you may attempt the
+following three steps in sequence:
+<ol>
+	<li><b>Backup your files/programs.</b> You can do this by copying your
+	files/programs into another directory, which you should <b>not</b>
+	delete.</li><br>
+	<li>Delete your entire submission directory</li><br>
+	<li>Repeat the steps below beginning with setting up your submission
+	directory.</li><br>
+</ol>
+</p>
+
+<p>
+<b>Remember: You are responsible for the security of your files. Do NOT allow
+	anyone to access your files! If someone cheats by accessing your files
+	because they were not properly secured, both parties will be found guilty of
+	cheating and suffer the same consequences.</b>
+</p>
+
+<p>Having problems submitting? Contact a TA in person during office hours.</p>
+<h3>Installing TortoiseSVN</h3>
+<p>
+<ol>
+	<li>Navigate to <a
+		href="http://tortoisesvn.net/downloads.html">http://tortoisesvn.net/downloads.html</a>.</li><br>
+	<li>Download the version of TortoiseSVN appropriate for your personal
+	computer by clicking on either "TortoiseSVN 32-Bit" or "TortoiseSVN 64-Bit".
+	<b>Do not click on any other link on this page. Only use the green buttons
+		labeled "TortoiseSVN 32-Bit" or "TortoiseSVN 64-Bit".</b> You can check
+	which version you need by checking your computer properties page (right
+	click on "Computer", select "Properties"). Under "System Type", if it says
+	"32-bit Operating System", you should download "TortoiseSVN 32-Bit". If it
+	says "64-bit Operating System", you should download "TortoiseSVN 64-Bit".
+	Ask a TA is you're not sure which one you should install. </li><br>
+	<li>Run the installer file you downloaded in step 2.</li><br>
+	<li>Click Next.</li><br>
+	<li>Select "I accept the terms in the License Agreement".</li><br>
+	<li>Click Next.</li><br>
+	<li>Accept the default settings on this page by clicking Next.</li><br>
+	<li>Click Install.</li><br>
+	<li>If Windows asks for permission to install TortoiseSVN, click Yes.</li><br>
+	<li>Wait for TortoiseSVN to finish installing, and click Finish.</li><br>
+	<li>If TortoiseSVN asks you to restart your computer, click Yes (this will
+	immediately restart your computer. Save your work beforehand).</li><br>
+</ol>
+</p>
+
+<a name =setting_submission_dir> 
+<h3>Setting Up Your Submission Directory</h3>
+<p>
+<ol>
+	<li><b>For this step, you will need to know your submission username and
+		password.</b> Your submission username is your UTEID (all lowercase). You
+	can find your password in BlackBoard. Check out the grades section of
+	BlackBoard for EE306, and look for your Program Submission Password. The
+	sample below uses "fakestudent" as the UTEID. Replace all instances of "fakestudent"
+	with your own UTEID in order to submit your program.</li><br>
+	<li>Create a directory on the machine you are using where you can work on
+	and submit EE306 labs. For example, you may call it "EE306_Labs".</li><br>
+	<li>Enter this directory and right click on empty white space. Click on the
+	option labeled "SVN Checkout...".  <br/> <br><img src="submission_figs/svn_1.png" /> </li><br>
+	<li>In the "Checkout" window that pops up, enter the following text: <br/>
+	<tt>https://vandross.ece.utexas.edu/ee306/fa2013/students/<b>&lt your_uteid &gt</b></tt>
+	<br/> Into the "URL of repository:" field. The figure below shows the link for the UT EID: "fakestudent". Replace the word "fakestudent" with <b> your UT EID </b>
+	<br/> <br><img src="submission_figs/checkout_path.png" /> </li><br>
+	<li>Click "OK", and wait for the "Authentication" window to pop up (this can
+	take a while). Enter your UTEID and password (<b>this is not your UTEID
+		password! Check BlackBoard for your submission password</b>) into the
+	window. Click the "Save authentication" box.<br><br> 
+	<font color = red> Note: The password that shows up on Blackboard has a "/0" appended to it. 
+		These two characters are NOT a part of your password. 
+		Do not include those when you type your password. <a href=passwd_clarification.png>Here</a> is a screenshot to show what we mean.</font> 
+	<br/> <br><img src="submission_figs/login.png" />
+	</li><br>
+	<li>Click "OK". You should see an indicator that mentions the process is
+	"Completed. At Revision: ...". Click "OK" once this happens. <br/> <br><img
+	src="submission_figs/checkout_filelist.png" /> </li><br>
+</ol>
+</p>
+
+<a name =updating_submission_dir> 
+<h3>Updating Your Submission Directory</h3>
+<p>
+<ol>
+	<li>Enter the directory you created in "Setting Up Your Submission
+	Directory". (e.g., EE306_Labs). Right click on empty white space. Click on
+	the option labeled "SVN Update". <br/> <br><img src="submission_figs/svn_5.png" /> </li><br>
+	<li>Wait for the message "Completed. At Revision: ...". Click "OK" once this
+	happens. <br/> <br><img src="submission_figs/svn_6.png" /> </li><br>
+</ol>
+</p>
+
+<a name =submitting_prg> 
+<h3>Submitting Your Program</h3>
+<p>
+<ol>
+	<li>Enter your submission directory. (e.g. "EE306_Labs").</li><br>
+	<li>Navigate to the appropriate project directory (e.g., "project1").</li><br>
+	<li>You should see file(s) in the project directory with the appropriate
+	name for whichever programming assignment you are submitting (e.g.,
+	"count.bin"). These files will generally be empty. They may or may not
+	contain useful code to help you get started, depending on which programming
+	assignment you are working on.<br/> <br><img src="submission_figs/directory.png" /> </li><br>
+	<li>You have two options: you can delete these helper files, and copy your
+	files <b>of the exact same name</b> into this directory, or you may open
+	these files, and write your program into the given files. Be sure to save
+	the programs when you are done.</li><br>
+	<li>In the project directory, right click on empty white space. Select "SVN
+	Commit...". <br/> <br><img src="submission_figs/commit.png" /> </li><br>
+	<li>A window labeled "Commit" should appear. Click "OK". <br/> <br><img
+	src="submission_figs/commit1.png" /> </li><br>
+	<li>You should see a message "Completed. At Revision: ...". Click "OK" once
+	this happens. <br/> <br><img src="submission_figs/commit2.png" /> </li><br>
+	<li>Congratulations! You've submitted your program. A few more notes: you
+	can resubmit your program as many times as you want up until the deadline.
+	We will ignore any submissions you make beyond the deadline, so be sure to
+	finish your lab on time.</li><br>
+	<li><b>Note: If you see folders called ".svn", do not modify/delete
+		them.</b></li><br>
+</ol>
+</p>
+<a name=verifying_submission>
+<h3>Verifying Your Submission</h3>
+<p>
+Make sure you perform the following additional steps to verify your submission.
+<ol>
+	<li>In your browser, navigate to: <br/>
+	<tt>https://vandross.ece.utexas.edu/ee306/fa2013/students/<b>your_uteid</b></tt></li><br>
+	<li>Enter your submission username and password. <b>This is not your UTEID
+		password!</b> Remember, check BlackBoard for your submission
+	password. Note that the password on Blackboard has the characters "/0" appended to it. You need to remove those when you type in your password. The screenshot <a href=passwd_clarification.png>here</a> shows what we mean. </li><br>
+	<li>Click on the project directory you wish to verify submission for. Here,
+	you can see the latest files you have submitted. <br/> <br><img src="submission_figs/verify.png"
+	/> <br/> <li> Click on the file link to see its contents. </li><br><br><img src="submission_figs/verify1.png" /> </li><br><br>
+	<li>Try refreshing your browser if it appears that the file on the website
+	is not updating.</li><br>
+</ol>
+</p>
+
+<p>
+<b>Note: If you are familiar with command-line based subversion tools, feel
+	free to use these at your own risk. We are not responsible if you fail to
+	correctly submit your program with these tools.</b>
+</p>
+
+</body></html>
