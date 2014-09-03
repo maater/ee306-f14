@@ -1,0 +1,304 @@
+<html>
+  <head>
+    <title>EE 306 - Problem Set 1</title>
+  </head>
+  <body bgcolor="white">
+    <center>
+      <h2>Department of Electrical and Computer Engineering</h2>
+      <h3>The University of Texas at Austin</h3>
+    </center>
+    EE 306, Fall 2013<br>
+    Problem Set 1<br>
+    Due: 11 September, before class<br>
+    Yale N. Patt, Instructor<br>
+	 TAs: Ben Lin, Mochamad Asri, Ameya Chaudhari, Nikhil Garg, Lauren Guckert, <br>
+	 &nbsp&nbsp&nbspJack Koenig, Saijel Mokashi, Sruti Nuthalapati, Sparsh Singhai, Jiajun Wang<br>
+
+
+    <p>
+    <ol>
+       <li> <!-- Begin Question -->
+       Please turn in the <a href="../info.html">Student Information Sheet</a> with a recognizable photograph on the same day you turn in this problem set. 
+       </li><!-- End of Question -->
+
+
+       <br>
+
+       <li> <!-- Begin Question -->
+        (Adapted from problem 1.5 in the textbook)
+	<br>
+	Say we had a "black box," which takes two numbers as input and outputs their sum. See Figure 1.7a in the Textbook. Say we had another box capable of multiplying two numbers together. See figure 1.7b. We can connect these boxes together to calculate p * (m + n). See Figure 1.7c. Assume we have an unlimited number of these boxes. Show how to connect them together to calculate: 
+	<ol type=a>
+	  
+	  <li>
+	    ax+b
+
+
+
+	  </li>
+<img src="fig1a_sol.jpg">
+	  <li>
+	    The average of the four input numbers w, x, y, and z
+	  </li>
+<img src="fig1b_sol.jpg">
+	  <li>
+	    a<SUP>2</SUP> + 2ab + b<SUP>2</SUP> (can you do it with one add box and one multiply box?)
+	  </li>
+<img src="fig1c_sol.jpg">
+	  <li>
+	    a<SUP>6</SUP> (can you do it using only 3 multiply boxes?)
+	  </li>    
+<img src="fig1d_sol.jpg">
+	</ol>
+      </li><!-- End of Question -->
+      
+    <br>
+    
+
+
+
+    <li> <!-- Begin Question -->
+      (1.14)
+      <br>
+      Suppose we wish to put a set of names in alphabetical order. We call the act of doing so <italics>sorting</italics>. One algorithm that can accomplish that is called the bubble sort. We could then program our bubble sort algorithm in C, and compile the C program to execute on an x86 ISA. The x86 ISA can be implemented with an Intel Core microarchitecture. Let us call the sequence "Bubble Sort, C program, x86 ISA, Core microarchitecture" one <italics>transformation process</italics>.
+      <br>
+      Assume we have available four sorting algorithms and can program in C, C++, Pascal, Fortran, and COBOL. We have available compilers that can translate from each of theses to either x86 or SPARC, and we have available three different microarchitectures for x86 and three different microarchitectures for SPARC.
+      <ol type=a> 
+	<li>
+	  How many transformation processes are possible?
+	</li>
+
+<b> 120 </b>
+
+	<li>
+	  Write three examples of transformation processes.
+	</li>
+
+<b >1. Bubble sort, c++, x86, Core microarchitecture <br>
+    2. Bubble sort, COBOL, x86, Core microarchitecture <br>
+    3. Bubble sort, Pascal, x86, Core microarchitecture <br>
+    </b>
+
+	<li>
+	  How many transformation processes are possible if instead of three different microarchitectures for x86 and three different microarchitectures for SPARC, there were two for x86 and four for SPARC.
+	</li>
+<b> 120</b>
+      </ol>
+    </li><!-- End of Question -->
+    
+    <br>
+    
+    <li> (2.3)
+      <ol type=a>
+	<li>
+	  Assume that there are about 400 students in your class.  If every student is
+	  to be assigned a unique bit pattern, what is the minimum number of bits required to do this?
+	</li>
+<b> 9 </b>
+	<li>
+	  How many more students can be admitted to the class without requiring additional bits for each student's unique bit pattern?
+	</li>
+<b> 112 </b>
+      </ol>
+      
+      <br> 
+
+      <li>(Adapted from 2.13)
+	<br>Without changing their values, convert the following 2's complement binary numbers into 8-bit 2's complement numbers.
+	<ol type=a>
+	  <li>010110
+	  </li>
+<b> 0001 0110 </b>
+	  <li>1101
+	  </li>
+<b> 1111 1101 </b>
+	  <li>1111111000
+	  </li>
+<b> 11111000 </b>
+	  <li>01
+	  </li>
+<b> 00000001</b>
+	</ol>
+      </li>
+      
+      <br>
+      
+       <li>(Adapted from 2.17) 
+	  <br> Compute the following. Assume each operand is a 2's complement binary number.
+	  <br>
+	  <ol type=a>
+	  <li> 01 + 1011 </li>
+<b> 1100 </b>
+	  <li> 11 + 01010101 </li>
+<b>  01010100 </b>
+	  <li> 0101 + 110 </li>
+<b> 0011 </b>
+	  <li> 01 + 10 </li>
+<b> 11 </b>
+	  </ol> 
+	</li>
+	
+	<br>
+      
+      <li> Without changing their values, convert the following 8-bit 2's complement binary numbers into decimal numbers.
+	<ol type=a>
+	  <li>01010101
+	  </li>
+    <b>85</b>
+	  <li>10001101
+	  </li>
+    <b>-115</b>
+	  <li>10000000
+	  </li>
+    <b> -128 </b>
+	  <li>11111111
+	  </li>
+    <b> -1 </b>
+	</ol>
+      </li>
+      
+      <br>
+     
+   <li> 
+
+    Express the value 0.3 in the 32-bit floating point format that
+we discussed in class today.  Feel free to only show fraction bits [22:15],
+rather than all the fraction bits, [22:0].  Notation: The symbol [22:15]
+signifies all 8 bits from bit 22 to bit 15.  
+<p>
+<b> 0 01111101 00110011 </b>
+
+ <li> 
+ Convert the following floating point representation to its
+decimal equivalent:
+<p>
+                1 10000010  10101001100000000000000
+<p>
+
+<b> -13 19/64 </b>
+
+
+      <li>(Adapted from 2.50)  <font color="red">  Postponed to Problem Set 2.</font> <br>
+
+	<br>Perform the following logical operations. Express your answers in hexadecimal notation.
+	<ul>
+	  <li>xABCD OR x9876
+	  </li>
+	  <li>x1234 XOR x1234
+	  </li>
+	  <li>xFEED AND (NOT(xBEEF))
+	  </li>
+	</ul>
+      </li>
+      
+      <br>
+      
+
+      <li>(2.54) <font color="red"> Postponed to Problem Set 2. </font> <br>
+	  <br>Fill in the truth table for the equations given. The first line is done as an example.
+	  <br>
+	  <center>Q1 = NOT (NOT(X) OR (X AND Y AND Z))
+	    <br>
+	    Q2 = NOT ((Y OR Z) AND (X AND Y AND Z))
+      </li>
+      
+    </center>
+      <br>
+      
+      <center>
+	<table border="1">
+	  <tr>
+	    <th><pre>X    Y    Z </pre> </th>
+	    <th><pre>Q1    Q2 </pre> </th>
+	  </tr>
+	  <tr>
+	    <td>
+	      <pre>0    0    0</pre>
+	    </td>
+	    <td>
+	      <pre>0      1</pre>
+	  </tr>
+	  
+	  <tr>
+	    <td>
+	      <pre>           </pre>
+	    </td>
+	    <td>
+	      <pre>        </pre>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      <pre>           </pre>
+	    </td>
+	    <td>
+	      <pre>        </pre>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      <pre>           </pre>
+	    </td>
+	    <td>
+	      <pre>        </pre>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      <pre>           </pre>
+	    </td>
+	    <td>
+	      <pre>        </pre>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      <pre>           </pre>
+	    </td>
+	    <td>
+	      <pre>        </pre>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      <pre>           </pre>
+	    </td>
+	    <td>
+	      <pre>        </pre>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      <pre>           </pre>
+	    </td>
+	    <td>
+	      <pre>        </pre>
+	    </td>
+	  </tr>
+	</table>    
+      </center>
+      
+      <br>
+
+
+
+
+
+
+
+
+
+
+      <p></p>
+    </OL>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+

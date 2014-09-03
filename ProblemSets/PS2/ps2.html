@@ -1,0 +1,387 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  
+    <title>EE 306 - Problem Set 2</title>
+  </head><body bgcolor="white">
+    <center>
+      <h2>Department of Electrical and Computer Engineering</h2>
+      <h3>The University of Texas at Austin</h3>
+    </center>
+    EE 306, Fall 2013<br>
+    Problem Set 2<br>
+    Due: 25 September, before class<br>
+    Yale N. Patt, Instructor<br>
+	 TAs: Ben Lin, Mochamad Asri, Ameya Chaudhari, Nikhil Garg, Lauren Guckert, <br>
+	 &nbsp&nbsp&nbspJack Koenig, Saijel Mokashi, Sruti Nuthalapati, Sparsh Singhai, Jiajun Wang<br>
+
+	<p>
+      Instructions:
+      <br>
+      You are encouraged to work on the problem set in groups and turn
+      in one problem set for the entire group. Remember to put all
+      your names on the solution sheet. Also, remember to put the name
+      of the TA and the time for the discussion section you would like
+      the problem set turned back to you. Show your work. <br>
+      <br>
+      
+    </p>
+    
+
+
+ </p></li><ol><li>(Adapted from 2.50)  <font color="red">  Carried from problem set 1.</font> <br>
+
+	<br>Perform the following logical operations. Express your answers in hexadecimal notation.
+	<ul>
+	  <li>xABCD OR x9876
+	  </li>
+	  <li>x1234 XOR x1234
+	  </li>
+	  <li>xFEED AND (NOT(xBEEF))
+	  </li>
+	</ul>
+      </li>
+      
+      <br>
+      
+
+      <li>(2.54) <font color="red"> Carried from problem set 1. </font> <br>
+	  <br>Fill in the truth table for the equations given. The first line is done as an example.
+	  <br>
+	  <center>Q1 = NOT (NOT(X) OR (X AND Y AND Z))
+	    <br>
+	    Q2 = NOT ((Y OR Z) AND (X AND Y AND Z))
+      </center></li>
+      
+      <br>
+      
+      <center>
+	<table border="1">
+	  <tbody><tr>
+	    <th><pre>X    Y    Z </pre> </th>
+	    <th><pre>Q1    Q2 </pre> </th>
+	  </tr>
+	  <tr>
+	    <td>
+	      <pre>0    0    0</pre>
+	    </td>
+	    <td>
+	      <pre>0      1</pre>
+	  </td></tr>
+	  
+	  <tr>
+	    <td>
+	      <pre>           </pre>
+	    </td>
+	    <td>
+	      <pre>        </pre>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      <pre>           </pre>
+	    </td>
+	    <td>
+	      <pre>        </pre>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      <pre>           </pre>
+	    </td>
+	    <td>
+	      <pre>        </pre>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      <pre>           </pre>
+	    </td>
+	    <td>
+	      <pre>        </pre>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      <pre>           </pre>
+	    </td>
+	    <td>
+	      <pre>        </pre>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      <pre>           </pre>
+	    </td>
+	    <td>
+	      <pre>        </pre>
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	      <pre>           </pre>
+	    </td>
+	    <td>
+	      <pre>        </pre>
+	    </td>
+	  </tr>
+	</tbody></table>    
+      </center>
+      
+      <br>
+
+    <p>
+    </p>
+<li> <!-- Begin Question -->
+	Professor Patt is trying to decide when he should shave his beard.
+	Your job is to design a logic circuit whose output Y is equal to 1 when Professor Patt should shave his beard, and 0 when he should not. The circuit will receive three input variables (A, B, C) that answer three different yes/no questions (1=yes, 0=no).  
+<br><br>
+	A<=Has Professor Patt been uncomfortably warm this summer?
+<br>
+	B<=Does Professor Patt want a new, fresher look?
+<br>
+	C<=Are beards “cool”?
+<br><br>
+	We think that Professor Patt should shave his beard if he has been uncomfortably warm this summer. He should also shave his beard if he wants a new fresher look and beards are not “cool”.
+<br>
+	Write the logic equation for Y in terms of A,B,C that solves this problem, and draw the gate-level diagram.
+<br>
+</li><!-- End of Question --><br>
+
+
+<li><!-- Begin Question --> 
+    <ol type="a">
+      <li> (3.11) Draw a transistor-level diagram for a three-input AND gate
+	and a three-input OR gate. Do this by extending the designs from
+	Figures 3.6a and 3.7a. (Figures can be found in the book on pages
+	56 &amp; 57 respectively). </li>
+
+      <li> Replace the transistors in your diagrams from part (<i>a</i>)
+with either a wire or no wire to reflect the circuit&#8217;s operation when
+the following inputs are applied:
+        <ol type="1">
+           A = 1, B = 0, C = 0 
+
+        </ol>
+		  </li>
+<!--		  <li> (3.8) The transistor level circuit below implements the logic equation given below. Label the inputs to all the transistors. 
+		  <br>
+		  <br>
+		  <center> 
+			  Y = NOT (A AND (B OR C)) <br> <br>
+			  <img src=ps2_figs/q_38_fig.png height=40%><br>
+			  Figure 1 <br>
+		  </center>
+		  -->
+		  <li> The transistor circuit shown below produces the accompanying truth table. The inputs to some of the gates of the transistors are not specified. Also, the outputs for some of the input combinations of the truth table are not specified. Complete both specifications. i.e., all transistors will have their gates properly labeled with either A, B, or C,
+		  and all rows of the truth table will have a 0 or 1 specified as the output. <br>
+		  <center>
+			  <img src= ps2_figs/unopt_gate.jpg height = 55%> <br>
+			  Figure 1 <br>
+		  </center>
+	  </ol>
+  </li><!-- End of Question --> <br>
+
+  <br>
+
+<li><!-- Begin Question -->
+Shown below are several logical identities with one item missing in each.
+X represents the case where it can be replaced by either a 0 or a 1 and
+the identity will still hold.  Your job: Fill in the blanks with either a 
+0, 1, or X.
+<p>
+
+For example, in part a, the missing item is X.  That is 0 OR 0 = 0 and 
+0 OR 1 = 1.
+
+<ol type="a">
+<li> 0 OR  X = ___
+<li> 1 OR  X = ___
+<li> 0 AND X = ___
+<li> 1 AND X = ___
+<li> __ XOR X = X
+</ol>
+
+</li><!-- End of Question --> <br>
+
+
+<li><!-- Begin Question -->(3.19) <br>
+      Logic circuit 1 in Figure 3.36 (page 87 of the book) has inputs A, B,
+      C. Logic circuit 2 in Figure 3.37 (page 87 of the book) has inputs A
+      and B. Both logic circuits have an output D. There is a fundamental
+	difference between the behavioral characteristics of these two
+	circuits. What is it? <i>Hint</i>: What happens when the voltage at
+	input A goes from 0 to 1 in both circuits? <br>
+</li><!-- End of Question --><br>
+	
+
+
+<li><!-- Begin Question -->(Adapted from 3.22) <br>
+	A) Implement a 4-to-1 mux using only 2-to-1 muxes making sure to properly
+	connect all of the terminals. Remember that you will have 4 inputs (A, B, C, and D), 2
+	control signals (S1 and S0), and 1 output (OUT). After implementing the 4-1 mux, 
+	fill in the truth table below. <br>	
+	B) Implement F = A xor B using ONLY two 2-to-1 muxes. You are not allowed to use a not gate (A' and B' are not available).
+	<br><br>
+      
+	
+	<img src="ps2_figs/mux_table.jpg"><br>
+
+</li><!-- End of Question --><br>
+
+<li><!-- Begin Question -->(Adapted from 3.25)<br>
+
+	Say the speed of a logic structure depends on the largest number of logic
+	gates through which any of the inputs must propagate to reach an output.
+	Assume that a NOT, an AND, and an OR gate all count as one gate delay. For
+	example, the propagation delay for a two-input decoder shown in Figure
+	3.11 is 2 because some inputs propagate through two gates.
+<ol type="a">
+	<li>
+	What is the propagation delay for the two-input mux shown in Figure 3.12 (page 61)?
+	</li><li>
+	What is the propagation delay for the 4-bit adder shown in Figure 3.16 (page 63)?
+	</li><li>
+	Can you reduce the propagation delay for the circuit shown in Figure 3
+	by implementing the equation in a different way? If so, how?
+	<center>
+	  <br>
+	  <img src="ps2_figs/and_5.gif"><br>
+	  Figure 2 <br>
+	  <br>
+
+	</center>
+</li><!-- End of Question --></ol>
+
+
+<br>
+<li><!-- Begin Question --> (3.26) <br>
+	Recall that the adder was built with individual "slices" that produced
+	a sum bit and carryout bit based on the two operand bits A and B and
+	the carryin bit. We called such an element a full-adder. Suppose we
+	have a 3-to-8 decoder and two six-input OR gates, as shown in Figure 3
+	below. Can we connect them so that we have a full-adder? If so, please
+	do. (<i>Hint</i>: If an input to an OR gate is not needed, we can
+	simply put an input 0 on it and it will have no effect on anything. For
+	example, see the figure below.)<br>
+    <center><!-- FIGURE 3 (Decoder) GOES HERE --><br>
+    <img src="ps2_figs/decoder.gif"><br>
+
+Figure 3<br>
+    <br>
+    </center>
+  </li><!-- End of Question -->
+
+
+  <a name=Problem10>
+	  <li><p><!-- Begin Question --> <font color = red> Problem description revised on 09/24/2013 </font>
+	  We wish to design a controller for an elevator such that if you push a button
+	  for a desired floor, the controller will output the floor number that the elevator
+	  should go to.  However, to deter lazy people from going up or down one floor,
+	  if you push the button for the next floor (up or down), the elevator will stay on its
+	  current floor. If you push the button for the same floor that you're currently on,
+	  the controller will output the current floor number. There are four floors in the building.</p>
+  <p>
+  Your job: construct a complete truth table for the elevator controller.
+  It is not necessary to draw the logic here; the truth table is sufficient.
+  </p>
+  Hint: What information does the controller need in order to output the floor
+  to go to?
+  </p>
+
+  <p>
+  Hint: How many input bits will that require.
+  </p>
+
+  <p>
+  Hint: How many output bits will the controller have to supply.
+</p></li><!-- End of Question -->
+
+
+  <li> <!-- Begin Question --> <br/>
+We want to make a state machine for the scoreboard of the Texas vs. Oklahoma Football game. The following information is required to determine the state of the game:
+ 
+<br> 
+<br> 
+1. Score: 0 to 99 points for each team
+<br> 
+2. Down: 1, 2, 3, or 4
+<br> 
+3. Yards to gain: 0 to 99
+<br> 
+4. Quarter: 1, 2, 3, 4
+<br> 
+5. Yardline: any number from Home 0 to Home 49, Visitor 0 to Visitor 49, 50
+<br> 
+6. Possesion: Home, Visitor
+<br> 
+7. Time remaining: any number from 0:00 to 15:00, where m:s (minutes, seconds)
+
+<br> 
+(a) What is the minimum number of bits that we need to use to store the state required?
+<br>
+(b) Suppose we make a separate logic circuit for each of the seven elements on the scoreboard, how many bits would it then take to store the state of the scoreboard?
+<br>
+(c) Why might the method of part b be a better way to specify the state than the method of part a?
+</li><!-- End of Question --><br>
+
+
+<li> <!-- Begin Question --> <br/>
+
+Shown below is a partially completed state diagram of a finite state machine that takes an input string of H (heads) ant T (tails) and produces an output of 1 every time the string HTHH occurs. <br> 
+<center>
+	<img src = ps2_figs/HT_state_machine.jpg height = 55%> <br>
+	Figure 4 <br>
+</center>
+
+<ol type="a">
+	<li> Complete the state diagram of the finite state machine that will do this for any input sequence of any length </li>
+	<li> If this state machine is implemented with a sequential logic circuit how many state variables will be needed? </li>
+</ol>
+	
+ </li> <!-- End of Question -->
+
+
+<li><!-- Begin Question --><br/>
+ A logic circuit consisting of 6 gated D latches and 1 inverter is shown below:
+
+    <center><!-- FIGURE 3 (Decoder) GOES HERE --><br>
+    <img src="ps2_figs/latches.gif"><br>
+
+Figure 5<br>
+    <br>
+	<img src="ps2_figs/clock.jpg"><br>
+
+	Figure 6<br>
+	<br>
+    </center>
+Let the state of the circuit be defined by the state of the 6 D latches.
+Assume initially the state is 000000 and clk starts at the point labeled t0.
+<br>
+Question: What is the state after 50 cyles.  How many cycles does it take
+for a specific state to show up again?
+<br>
+<br>
+
+</li><!-- End of Question -->
+
+
+<li><!-- Begin Question --><br/>
+  <p>
+  (3.31) <br /> 
+    If a particular computer has 8 byte addressability and a 4 bit address space,
+    how many bytes of memory does that computer have?
+  </p>
+</li><!-- End of Question -->
+
+
+<li><!-- Begin Question --><font color=red >(Added on 09/18/2013)</font><br/>
+
+	<p> Draw the transistor level circuit of a 2 input XOR gate </p>
+
+</li><!-- End of Question -->
+
+      <p></p>
+
+
+    </ol>
+  </body></html>

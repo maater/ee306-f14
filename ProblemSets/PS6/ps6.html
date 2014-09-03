@@ -1,0 +1,723 @@
+<html>
+  <head>
+    <title>EE 306 - Problem Set 6</title>
+  </head>
+  <body bgcolor="white">
+    <center>
+      <h2>Department of Electrical and Computer Engineering</h2>
+      <h3>The University of Texas at Austin</h3>
+    </center>
+    EE 306, Fall 2013<br>
+    Problem Set 6<br>
+    Due: Not to be turned in<br>
+	 Yale N. Patt, Instructor<br>
+	 TAs: Ben Lin, Mochamad Asri, Ameya Chaudhari, Nikhil Garg, Lauren Guckert, <br>
+	 &nbsp&nbsp&nbspJack Koenig, Saijel Mokashi, Sruti Nuthalapati, Sparsh Singhai, Jiajun Wang<br>
+
+
+
+    
+	Note: This problem set is unusually long, and is not to be turned in.  We have
+    put it together and handed it out to give you some challenging examples to help
+    you prepare for the final exam.<br>
+
+    <ol>
+
+
+<li><!-- Begin Question --> <font color =red> Moved from problem set 5 </font>
+ (Adapted from 6.16) Shown below are the partial contents of memory locations x3000 to x3006.<br><br>
+
+<table border="1" align="center" bordercolor="#000000" style="background-color:#FFFFFF" width="600" cellpadding="3" cellspacing="1">
+	<tr align="center">
+
+		<td>&nbsp; </td>
+		<td>15</td>
+		<td></td>
+		<td></td>
+		<td></td>		
+		<td></td>
+		<td></td>
+		<td></td>
+
+		<td></td>		
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>		
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>0</td>
+
+	</tr>
+	<tr align="center">
+		<td>x3000</td>
+		<td>0</td>
+		<td>0</td>
+		<td>1</td>
+		<td>0</td>
+
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+
+	</tr>
+	<tr align="center">
+		<td>x3001</td>
+
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+
+		<td>1</td>
+		<td>0</td>
+		<td>0</td>
+
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+
+		<td>0</td>
+		<td>1</td>
+		<td>0</td>
+
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+
+		<td>1</td>
+	</tr>
+	<tr align="center">
+		<td>x3002</td>
+
+		<td>1</td>
+		<td>0</td>
+
+		<td>1</td>
+		<td>1</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>&nbsp; </td>
+
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+	</tr>
+	<tr align="center">
+		<td>x3003</td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+	</tr>
+	<tr align="center">
+		<td>x3004</td>
+		<td>1</td>
+
+		<td>1</td>
+		<td>1</td>
+		<td>1</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>1</td>
+		<td>0</td>
+		<td>0</td>
+
+		<td>1</td>
+		<td>0</td>
+		<td>1</td>
+	</tr>
+	<tr align="center">
+		<td>x3005</td>
+
+		<td>0</td>
+
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+
+		<td>0</td>
+
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+		<td>1</td>
+		<td>1</td>
+
+		<td>0</td>
+
+		<td>0</td>
+		<td>0</td>
+		<td>0</td>
+	</tr>
+	<tr align="center">
+
+		<td>x3006</td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+		<td>&nbsp; </td>
+	</tr>
+
+</table>
+
+<br><br>
+
+The PC contains the value x3000, and the RUN button is pushed.<br><br>
+As the program executes, we keep track of all values loaded into the MAR. Such a record is often referred to as an address trace. It is shown below. <br><br>
+<center>
+<u><b>MAR Trace <br></b></u>
+  x3000<br>
+  x3005<br>
+
+  x3001<br>
+
+  x3002<br>
+  x3006<br>
+  x4001<br>
+  x3003<br>
+  x0021<br><br>
+
+</center>
+Your job: Fill in the missing bits in memory locations x3000 to x3006.
+
+
+</li> <!-- End of Question --><br><br>
+<li><!-- Begin Question -->
+<font color =red> Moved from problem set 5 </font>
+<p>
+Jane Computer (Bob's adoring wife), not to be outdone
+by her husband, decided to rewrite the <code>TRAP x22</code> handler at a different place in
+memory. Consider her implementation below. If a user writes a program that uses this
+
+
+<code>TRAP</code> handler to output an array of characters, how many times is the <code>ADD</code>
+
+instruction at the location with label <code>A</code> executed? Assume that the
+user only calls this "new" <code>TRAP x22</code> once. What is wrong with this <code>TRAP</code> handler?
+Now add the necessary instructions so the <code>TRAP</code> handler executes properly.</p>
+
+<p>Hint: <code>RET</code> uses <code>R7</code> as linkage back to the caller
+(<code>RET</code> is equivalent to <code>JMP R7</code>).</p>
+
+<pre><code>
+; TRAP handler
+; Outputs ASCII characters stored in consecutive memory locations.
+; R0 points to the first ASCII character before the new TRAP x22 is called.
+; The null character (x00) provides a sentinel that terminates the output sequence.
+
+        .ORIG x020F
+START   LDR R1, R0, #0
+        BRz DONE
+        ST R0, SAVER0
+        ADD R0, R1, #0
+        TRAP x21
+        LD R0, SAVER0
+A       ADD R0, R0, #1
+        BRnzp START
+DONE    RET
+ 
+SAVER0  .BLKW #1
+        .END
+</code></pre>
+</li><!-- End of Question --><br/>
+
+<li><!-- Begin Question -->
+<font color =red> Moved from problem set 5 </font>
+(Adapted from 9.2) 
+<ol type="a">
+
+<li><p>How many <code>TRAP</code> service routines can be implemented in the LC-3? Why?</p></li>
+
+<li><p>Why must a <code>RET</code> instruction be used to return from a <code>TRAP</code> routine? Why won't
+a <code>BRnzp</code> (unconditional <code>BR</code>) instruction work instead?</p></li>
+
+<li><p>How many accesses to memory are made during the processing of a <code>TRAP</code> instruction?</p></li>
+
+</ol>
+</li><!-- End of Question --><br/>
+
+
+<li><!-- Begin Question -->
+<font color =red> Moved from problem set 5 </font>
+(Adapted from 8.15)<br>
+<ol type="a">
+    <li>What does the following LC-3 program do?
+<pre><code>
+        .ORIG  x3000
+        LD R3 , A
+        STI R3, KBSR
+AGAIN   LD R0,B
+        TRAP X21
+        BRnzp AGAIN
+A       .FILL X4000
+B       .FILL X0032
+KBSR    .FILL XFE00
+        .END
+</code></pre>
+    </li>
+    <li> If someone strikes a key, the program will be interrupted and the
+keyboard interrupt service routine will be executed as shown below.
+What does the keyboard interrupt service routine do?
+<pre><code>
+        .ORIG X1000
+        LDI R0,KBDR
+        TRAP X21
+        TRAP X21
+        RTI
+KBDR    .FILL XFE02
+        .END
+</code></pre>
+</li>
+<li>
+Finally, suppose the program of part a started executing, and someone sitting at the keyboard struck a key. What would you see on the screen?
+</li>
+</ol>
+</li><!-- End of Question --><br/>
+
+<li>
+(Adapted from 10.1)<br>
+What are the defining characteristics of a stack? Give two implementations of a stack and describe their differences.
+</li>      
+<br>	
+      <li>A zero-address machine is a stack-based machine where all operations are
+	done by using values stored on the operand stack.  For this problem, you may
+	assume that the ISA allows the following operations:<br>
+	<br>
+	PUSH M - pushes the value stored at memory location M onto the operand stack.<br>
+
+	<br>
+	POP M - pops the operand stack and stores the value into memory location M.<br>
+	<br>
+	OP - Pops two values off the operand stack and performs the binary operation OP
+	on the two values. The result is pushed back onto the operand stack.<br>
+	<br>
+	Note: OP can be ADD, SUB, MUL, or DIV for parts a and b of this problem.<br>
+	Note: See the <a href="http://users.ece.utexas.edu/~patt/09f.306/ProblemSets/PS5/stack.html">stack machine</a> supplemental handout for help on this problem.<br>
+
+	<br>
+
+	<ol type="a">
+	  <li>Draw a picture of the stack after each of the instructions below are executed.  
+	    What is the minimum number of memory locations that have to be used on the stack 
+	    for the purposes of this program?  Also write an arithmetic equation expressing 
+	    u in terms of v, w, x, y, and z.  The values u, v, w, x, y, and z are stored in 
+	    memory locations U, V, W, X, Y, and Z.
+	    <pre>            PUSH V
+            PUSH W
+            PUSH X
+            PUSH Y
+            MUL
+            ADD
+            PUSH Z
+            SUB
+            DIV
+            POP U
+	    </pre>
+
+	  </li><li>Write the assembly language code for a zero-address machine 
+	    (using the same type of instructions from part a) for calculating 
+	    the expression below.  The values a, b, c, d, and e are stored in 
+	    memory locations A, B, C, D, and E.<br>
+	    <br>
+	    e = ((a * ((b - c) + d))/(a + c))<br>
+
+	    <br>
+
+</li></ol>
+
+</li>
+    <li> <!--<font color="red">  Updated on 11/13/09.</font>--> <br> The memory locations given below store students' exam scores in form of a linked list. Each node of the linked list uses three memory locations to store <br>
+
+1) Address of the next node<br>
+2) Starting address of the memory locations where name of the student is stored<br>
+3) Starting address of the memory locations where the his/her exam score is stored<br>
+
+in the given order. The first node is stored <!--<del>at the location x4000</del>--> <!--<font color="red">--> in locations x4000 ~ x4002 <!-- </font> -->. The ASCII code x0000 is used as a sentinel to indicate the end of the string. Both the name and exam score are stored as strings.<br>
+
+Write down the student's name and score in the order that it appears in the list <br>
+
+<pre > <code>
+
+    Address         Contents
+    x4000           x4016
+    x4001           x4003
+    x4002           x4008
+    x4003           x004D
+    x4004           x0061
+    x4005           x0072
+    x4006           x0063
+    x4007           x0000
+    x4008           x0039
+    x4009           x0030
+    x400A           x0000
+    x400B           x0000
+    x400C           x4019
+    x400D           x401E
+    x400E           x004A
+    x400F           x0061
+    x4010           x0063
+    x4011           x006B
+    x4012           x0000
+    x4013           x0031
+    x4014           x0038
+    x4015           x0000
+    x4016           x400B
+    x4017           x400E
+    X4018           x4013
+    x4019           x004D
+    x401A           x0069
+    x401B           x006B
+    x401C           x0065
+    x401D           x0000
+    x401E           x0037
+    x401F           x0036
+    x4020           x0000
+</code>
+</pre>
+</li>
+      
+    <li> (Adapted from 10.9) The input stream of a stack is a list of all the elements we pushed onto the stack, in the order that we pushed them.
+	The input stream from Excercise 10.8 from page 284 of the book for example is ABCDEFGHIJKLM<br>
+
+	The output stream is a list of all the elements that are popped off the stack in the order that they are popped off. <br>
+
+	a. If the input stream is ZYXWVUTSR, create a sequence of pushes and pops such that the output stream is YXVUWZSRT. <br>
+	b. If the input stream is ZYXW, how many different output streams can be created.<br> 
+
+	<br>
+	
+      <li>Do Problem 6.16 on page 175 in the textbook.<br>
+	
+	<br>
+    <li>
+	(Adapted from 10.6) 
+	Rewrite the PUSH and POP routines such that the stack on which they operate holds elements that take up two memory locations each.
+	
+	Assume we are writing a program to simulate a stack machine that manipulates 32-bit integers with the LC-3. We would need
+	PUSH and POP routines that operate with a stack that holds elements which take up two memory locations each. Rewrite the PUSH and POP routines 
+	for this to be possible.
+	
+	
+      <li>Consider the following LC-3 assembly language program. Assumming that the memory locations DATA get filled before the program executes, what is the relationship between the final values at DATA and the initial values at DATA?<br>
+<pre>
+	.ORIG   x3000
+	LEA     R0, DATA
+        AND     R1, R1, #0
+        ADD     R1, R1, #9
+LOOP1   ADD     R2, R0, #0
+        ADD     R3, R1, #0
+LOOP2   JSR     SUB1
+        ADD     R4, R4, #0
+        BRzp    LABEL
+        JSR     SUB2
+LABEL   ADD     R2, R2, #1
+        ADD     R3, R3, #-1
+        BRp     LOOP2
+        ADD     R1, R1, #-1
+        BRp     LOOP1
+        HALT
+DATA    .BLKW   #10
+SUB1    LDR     R5, R2, #0
+        NOT     R5, R5
+        ADD     R5, R5, #1
+        LDR     R6, R2, #1
+        ADD     R4, R5, R6
+        RET
+SUB2    LDR     R4, R2, #0
+        LDR     R5, R2, #1
+        STR     R4, R2, #1
+        STR     R5, R2, #0
+        RET
+        .END
+</pre>
+
+      <li>During the initiation of the interrupt service routine, the N, Z, and P condition codes are saved on the stack.  
+	By means of a simple example show how incorrect results would be generated if the condition codes were not saved. 
+	Also, clearly describe the steps required for properly handling an interrupt.<br>
+	
+	<br>
+	
+      <li>
+	<ol type=a>
+	  <li>The program below counts the number of zeros in a 16-bit word.  Fill in the missing blanks below to make it work.<br>
+	    <pre>
+            .ORIG x3000
+            AND   R0, R0, #0
+            LD    R1, SIXTEEN
+            LD    R2, WORD
+A           BRn   B
+            ________________		
+B           ________________
+            BRz   C
+            ________________	
+            BR    A	; note: BR = BRnzp
+C           ST    R0, RESULT
+            HALT
+
+SIXTEEN     .FILL #16
+WORD        .BLKW #1
+RESULT      .BLKW #1
+            .END</pre>
+	  <li>After you have the correct answer above, what one instruction can you change (without adding any instructions) 
+	    that will make the program count the number of ones instead?<br>
+	</ol>
+	
+	<br>
+	
+      <li>Fill in the missing blanks so that the subroutine below implements a stack multiply.  That is it pops the top two elements off the stack, 
+	multiplies them, and pushes the result back on the stack.  You can assume that the two numbers will be non-negative integers 
+	(greater than or equal to zero) and that their product will not produce an overflow.  Also assume that the stack has been properly 
+	initialized, the PUSH and POP subroutines have been written for you and work just as described in class, and that the stack will not 
+	overflow or underflow.<br>
+	<br>
+	Note: All blanks must be filled for the program to operate correctly.<br>
+	<pre>
+MUL        _______________
+           ST  R0, SAVER0
+	   ST  R1, SAVER1
+           ST  R2, SAVER2
+           ST  R5, SAVER5
+           AND R2, R2, #0
+           JSR POP
+           ADD R1, R0, #0
+           JSR POP
+           ADD R1, R1, #0
+           _______________
+         
+AGAIN      ADD R2, R2, R0
+           _______________
+           BRp AGAIN
+DONE       ADD R0, R2, #0
+           JSR PUSH
+           _______________
+           LD R0, SAVER0
+           LD R1, SAVER1
+           LD R2, SAVER2
+           LD R5, SAVER5
+           RET
+	</pre>
+
+      <li>The program below calculates the closest integer greater than or equal to the square root of the number stored in NUM, 
+	and prints it to the screen.  That is, if the number stored in NUM is 25, "5" will be printed to the screen.  If the number 
+	stored in NUM is 26, "6" will be printed to the screen.  Fill in the blanks below to make the program work.<br>
+	<br>
+	Note: Assume that the value stored at NUM will be between 0 an 81.
+	<pre>
+         .ORIG x3000
+         AND R2, R2, #0
+         LD R3, NUM
+         BRz OUTPUT
+         NOT R3, R3
+         ADD R3, R3, #1
+OUTLOOP  ADD R2, R2, #1
+         _______________  
+         AND R1, R1, #0
+INLOOP   ADD R1, R1, R2
+         ADD R0, R0, #-1
+         BRp INLOOP
+         _______________
+         BRn OUTLOOP
+OUTPUT   LD R0, ZERO
+         _______________
+         TRAP x21
+         HALT
+NUM      .BLKW 1
+ZERO     .FILL x30
+         .END
+	</pre>
+	
+      <li>The figure below shows the part of the LC-3 data path that deals with memory and I/O.
+	Note the signals labeled A through F. A is the memory enable signal, if it is 1 memory is enabled, if 
+	it is 0, memory is disabled.  B, C, and D are the load enable signals for the Device Registers.  If the load 
+	enable signal is 1, the register is loaded with a value, otherwise it is not. E is the 16-bit output of INMUX, and 
+	F is the 2-bit select line for INMUX.<br>
+	<br>
+	<img width="712" height="324" src="io_problem.jpg"><br>
+	<br>
+	The initial values of some of the processor registers and
+	the I/O registers, and some memory locations are as follows:<br>
+	<br>
+	<table width="600">
+	  <tr>
+	    <td valign="top">R0 = x0000<br>
+	PC = x3000<br></td><td valign="top">KBSR = x8000<br>
+	KBDR = x0061<br>
+	DSR = x8000<br>
+        DDR = x0031<br></td><td valign="top">M[x3009] = xFE00<br>
+	M[x300A] = xFE02<br>
+	M[x300B] = xFE04<br>
+	M[x300C] = xFE06<br></td></tr>
+	  </table><br>
+
+
+
+	During the entire instruction cycle, memory is accessed
+	between one and three times (why?). The following table lists two consecutive
+	instructions to be executed on the LC-3. Complete the table with the values
+	that each signal or register takes right after each of the memory accesses
+	performed by the instruction. If an instruction does not require three memory accesses, draw a line accross the unused accesses.
+        To help you get started, we have filled some of the values for you.<br>
+	<br>
+
+	  <table border="1">
+	  <tr>
+	      <td>PC</td>
+	      <td>Instruction</td>
+	      <td>Access</td>
+	      <td>MAR&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	      <td>A&nbsp;&nbsp;</td>
+	      <td>B&nbsp;&nbsp;</td>
+	      <td>C&nbsp;&nbsp;</td>
+	      <td>D&nbsp;&nbsp;</td>
+	      <td>E[15:0]&nbsp;&nbsp;</td>
+	      <td>F[1]&nbsp;&nbsp;</td>
+	      <td>F[0]&nbsp;&nbsp;</td>
+	      <td>MDR&nbsp;&nbsp;&nbsp;&nbsp;</td>
+           </tr>
+	  <tr><td rowspan="3" valign="top">x3000</td><td rowspan="3" valign="top"> LD R0, x9 </td><td>               1  </td><td>  x3000        </td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>           x2009</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+	  <tr>                              <td> 2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+	  <tr>                              <td> 3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+	  <tr><td rowspan="3" valign="top">x3001</td><td rowspan="3" valign="top"> LDR R0, R0, #0</td><td>               1  </td><td>  &nbsp;        </td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td> &nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+	  <tr>                              <td> 2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+	  <tr>                              <td> 3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+	</table>
+
+	<br>
+	
+      <li>Note: This problem is NOT easy.  In fact, it took me a while to solve it, and I am
+	supposed to be an expert on 306 material.  So, if you are struggling to pass this
+	course, I suggest you ignore it.  On the other hand, if you are a hot shot and think
+	no problem is beyond you, then by all means go for it.  We put it on the problem set
+	to keep some of the hot shots out of mischief.  We would not put it on the final,
+	because we think it is too difficult to put on the exam.<br>
+	<br>
+	A programmer wrote this program to do something useful.  He, however, forgot to comment his code, 
+	and now can't remember what the program is supposed to do.  Your job is to save him the trouble and 
+	figure it out for him.  In 20 words or fewer tell us what valuable information the program below provides 
+	about the value stored in memory location INPUT.  Assume that there is a non-zero value at location INPUT before the program is executed.<br>
+	<br>
+	HINT: When testing different values of INPUT pay attention to their bit
+	patterns.  How does the bit pattern correspond to the RESULT?<br>
+	<pre>
+              .ORIG x3000
+              LD R0, INPUT
+              AND R3, R3, #0
+              LEA R6, MASKS
+              LD R1, COUNT
+LOOP          LDR R2, R6, #0
+              ADD R3, R3, R3
+              AND R5, R0, R2
+              BRz SKIP
+              ADD R3, R3, #1
+              ADD R0, R5, #0
+SKIP          ADD R6, R6, #1
+              ADD R1, R1, #-1
+              BRp LOOP
+              ST R3, RESULT
+              HALT
+COUNT         .FILL #4
+MASKS         .FILL 0xFF00
+              .FILL 0xF0F0
+              .FILL 0xCCCC
+              .FILL 0xAAAA
+INPUT         .BLKW 1
+RESULT        .BLKW 1
+              .END	
+	</pre>
+	
+
+	<li> Figure out what the following program does.
+	<pre>	
+	.ORIG X3000
+	LEA R2, C
+	LDR R1, R2, #0
+	LDI R6, C
+	LDR R5, R1, #-3
+	ST R5, C
+	LDR R5, R1, #-4
+	LDR R0, R2, #1
+	JSRR R5
+	AND R3, R3, #0
+	ADD R3, R3, #7
+	LEA R4, B	
+A	STR R4, R1, #0
+	ADD R4, R4, #2
+	ADD R1, R1, #1
+	ADD R3, R3, #-1
+	BRP A
+	HALT 
+B	ADD R2, R2, #1
+	LDR R0, R2, #0
+	JSRR R5
+	TRAP X29
+	ADD R2, R2, #15
+	ADD R0, R2, #3
+	LD R5, C
+	TRAP X2B
+	ADD R2, R2, #5
+	LDR R0, R2, #0
+	JSRR R5
+	TRAP X27
+	JSRR R5
+	JSRR R6
+C	.FILL X25
+	.STRINGZ "EE306 and tests are awesome"
+	.END
+	</pre>
+    </ol>
+  </body>
+</html>
