@@ -7,28 +7,82 @@
       <h2>Department of Electrical and Computer Engineering</h2>
       <h3>The University of Texas at Austin</h3>
     </center>
-    EE 306, Fall 2013<br>
+    EE 306, Fall 2014<br>
     Problem Set 2<br>
-    Due: 25 September, before class<br>
-    Yale N. Patt, Instructor<br>
-	 TAs: Ben Lin, Mochamad Asri, Ameya Chaudhari, Nikhil Garg, Lauren Guckert, <br>
-	 &nbsp&nbsp&nbspJack Koenig, Saijel Mokashi, Sruti Nuthalapati, Sparsh Singhai, Jiajun Wang<br>
-
+	 Due: September 22th, at the beginning of class<font color=red> </font><br>
+     Aater Suleman, Instructor<br>
+	 TAs: Owais Khan, Cagri Eryilmaz and Chirag Sakhuja <br>
 	<p>
       Instructions:
       <br>
       You are encouraged to work on the problem set in groups and turn
       in one problem set for the entire group. Remember to put all
-      your names on the solution sheet. Also, remember to put the name
+      your names on the solution sheet. <font color=red> Also, remember to put the name
       of the TA and the time for the discussion section you would like
-      the problem set turned back to you. Show your work. <br>
+      the problem set turned back to you.</font> Show your work. <br>
       <br>
       
     </p>
     
 
 
- </p></li><ol><li>(Adapted from 2.50)  <font color="red">  Carried from problem set 1.</font> <br>
+
+<ol>
+    <li> (2.3)
+      <ol type=a>
+	<li>
+	  Assume that there are about 400 students in your class.  If every student is
+	  to be assigned a unique bit pattern, what is the minimum number of bits required to do this?
+	</li>
+	<li>
+	  How many more students can be admitted to the class without requiring additional bits for each student's unique bit pattern?
+	</li>
+      </ol>
+<br>
+
+<li>(Adapted from 2.13)
+	<br>Without changing their values, convert the following 2's complement binary numbers into 8-bit 2's complement numbers.
+	<ol type=a>
+	  <li>010110
+	  </li>
+	  <li>1101
+	  </li>
+	  <li>1111111000
+	  </li>
+	  <li>01
+	  </li>
+	</ol>
+      </li>
+      <br>
+
+<li>(Adapted from 2.17) 
+	  <br> Compute the following. Assume each operand is a 2's complement binary number.
+	  <br>
+	  <ol type=a>
+	  <li> 01 + 1011 </li>
+	  <li> 11 + 01010101 </li>
+	  <li> 0101 + 110 </li>
+	  <li> 01 + 10 </li>
+	  </ol> 
+	</li>
+	<br>
+
+   <li> <p>
+
+    Express the value 0.3 in the 32-bit floating point format that
+we discussed in class today.  Feel free to only show fraction bits [22:15],
+rather than all the fraction bits, [22:0].  Notation: The symbol [22:15]
+signifies all 8 bits from bit 22 to bit 15.  
+
+ <li> <p>
+ Convert the following floating point representation to its
+decimal equivalent:
+
+                1 10000010  10101001100000000000000
+
+      <br>
+
+<li>(Adapted from 2.50)  <br>
 
 	<br>Perform the following logical operations. Express your answers in hexadecimal notation.
 	<ul>
@@ -44,7 +98,7 @@
       <br>
       
 
-      <li>(2.54) <font color="red"> Carried from problem set 1. </font> <br>
+      <li>(2.54) <br>
 	  <br>Fill in the truth table for the equations given. The first line is done as an example.
 	  <br>
 	  <center>Q1 = NOT (NOT(X) OR (X AND Y AND Z))
@@ -203,184 +257,12 @@ For example, in part a, the missing item is X.  That is 0 OR 0 = 0 and
 
 </li><!-- End of Question --> <br>
 
-
-<li><!-- Begin Question -->(3.19) <br>
-      Logic circuit 1 in Figure 3.36 (page 87 of the book) has inputs A, B,
-      C. Logic circuit 2 in Figure 3.37 (page 87 of the book) has inputs A
-      and B. Both logic circuits have an output D. There is a fundamental
-	difference between the behavioral characteristics of these two
-	circuits. What is it? <i>Hint</i>: What happens when the voltage at
-	input A goes from 0 to 1 in both circuits? <br>
-</li><!-- End of Question --><br>
-	
-
-
-<li><!-- Begin Question -->(Adapted from 3.22) <br>
-	A) Implement a 4-to-1 mux using only 2-to-1 muxes making sure to properly
-	connect all of the terminals. Remember that you will have 4 inputs (A, B, C, and D), 2
-	control signals (S1 and S0), and 1 output (OUT). After implementing the 4-1 mux, 
-	fill in the truth table below. <br>	
-	B) Implement F = A xor B using ONLY two 2-to-1 muxes. You are not allowed to use a not gate (A' and B' are not available).
-	<br><br>
-      
-	
-	<img src="ps2_figs/mux_table.jpg"><br>
-
-</li><!-- End of Question --><br>
-
-<li><!-- Begin Question -->(Adapted from 3.25)<br>
-
-	Say the speed of a logic structure depends on the largest number of logic
-	gates through which any of the inputs must propagate to reach an output.
-	Assume that a NOT, an AND, and an OR gate all count as one gate delay. For
-	example, the propagation delay for a two-input decoder shown in Figure
-	3.11 is 2 because some inputs propagate through two gates.
-<ol type="a">
-	<li>
-	What is the propagation delay for the two-input mux shown in Figure 3.12 (page 61)?
-	</li><li>
-	What is the propagation delay for the 4-bit adder shown in Figure 3.16 (page 63)?
-	</li><li>
-	Can you reduce the propagation delay for the circuit shown in Figure 3
-	by implementing the equation in a different way? If so, how?
-	<center>
-	  <br>
-	  <img src="ps2_figs/and_5.gif"><br>
-	  Figure 2 <br>
-	  <br>
-
-	</center>
-</li><!-- End of Question --></ol>
+<li>
+Draw a transistor-level diagram for a 2-input OR gate. Do not build an OR gate by connecting a NOR gate with a NOT gate.
+</li>
 
 
 <br>
-<li><!-- Begin Question --> (3.26) <br>
-	Recall that the adder was built with individual "slices" that produced
-	a sum bit and carryout bit based on the two operand bits A and B and
-	the carryin bit. We called such an element a full-adder. Suppose we
-	have a 3-to-8 decoder and two six-input OR gates, as shown in Figure 3
-	below. Can we connect them so that we have a full-adder? If so, please
-	do. (<i>Hint</i>: If an input to an OR gate is not needed, we can
-	simply put an input 0 on it and it will have no effect on anything. For
-	example, see the figure below.)<br>
-    <center><!-- FIGURE 3 (Decoder) GOES HERE --><br>
-    <img src="ps2_figs/decoder.gif"><br>
-
-Figure 3<br>
-    <br>
-    </center>
-  </li><!-- End of Question -->
-
-
-  <a name=Problem10>
-	  <li><p><!-- Begin Question --> <font color = red> Problem description revised on 09/24/2013 </font>
-	  We wish to design a controller for an elevator such that if you push a button
-	  for a desired floor, the controller will output the floor number that the elevator
-	  should go to.  However, to deter lazy people from going up or down one floor,
-	  if you push the button for the next floor (up or down), the elevator will stay on its
-	  current floor. If you push the button for the same floor that you're currently on,
-	  the controller will output the current floor number. There are four floors in the building.</p>
-  <p>
-  Your job: construct a complete truth table for the elevator controller.
-  It is not necessary to draw the logic here; the truth table is sufficient.
-  </p>
-  Hint: What information does the controller need in order to output the floor
-  to go to?
-  </p>
-
-  <p>
-  Hint: How many input bits will that require.
-  </p>
-
-  <p>
-  Hint: How many output bits will the controller have to supply.
-</p></li><!-- End of Question -->
-
-
-  <li> <!-- Begin Question --> <br/>
-We want to make a state machine for the scoreboard of the Texas vs. Oklahoma Football game. The following information is required to determine the state of the game:
- 
-<br> 
-<br> 
-1. Score: 0 to 99 points for each team
-<br> 
-2. Down: 1, 2, 3, or 4
-<br> 
-3. Yards to gain: 0 to 99
-<br> 
-4. Quarter: 1, 2, 3, 4
-<br> 
-5. Yardline: any number from Home 0 to Home 49, Visitor 0 to Visitor 49, 50
-<br> 
-6. Possesion: Home, Visitor
-<br> 
-7. Time remaining: any number from 0:00 to 15:00, where m:s (minutes, seconds)
-
-<br> 
-(a) What is the minimum number of bits that we need to use to store the state required?
-<br>
-(b) Suppose we make a separate logic circuit for each of the seven elements on the scoreboard, how many bits would it then take to store the state of the scoreboard?
-<br>
-(c) Why might the method of part b be a better way to specify the state than the method of part a?
-</li><!-- End of Question --><br>
-
-
-<li> <!-- Begin Question --> <br/>
-
-Shown below is a partially completed state diagram of a finite state machine that takes an input string of H (heads) ant T (tails) and produces an output of 1 every time the string HTHH occurs. <br> 
-<center>
-	<img src = ps2_figs/HT_state_machine.jpg height = 55%> <br>
-	Figure 4 <br>
-</center>
-
-<ol type="a">
-	<li> Complete the state diagram of the finite state machine that will do this for any input sequence of any length </li>
-	<li> If this state machine is implemented with a sequential logic circuit how many state variables will be needed? </li>
-</ol>
-	
- </li> <!-- End of Question -->
-
-
-<li><!-- Begin Question --><br/>
- A logic circuit consisting of 6 gated D latches and 1 inverter is shown below:
-
-    <center><!-- FIGURE 3 (Decoder) GOES HERE --><br>
-    <img src="ps2_figs/latches.gif"><br>
-
-Figure 5<br>
-    <br>
-	<img src="ps2_figs/clock.jpg"><br>
-
-	Figure 6<br>
-	<br>
-    </center>
-Let the state of the circuit be defined by the state of the 6 D latches.
-Assume initially the state is 000000 and clk starts at the point labeled t0.
-<br>
-Question: What is the state after 50 cyles.  How many cycles does it take
-for a specific state to show up again?
-<br>
-<br>
-
-</li><!-- End of Question -->
-
-
-<li><!-- Begin Question --><br/>
-  <p>
-  (3.31) <br /> 
-    If a particular computer has 8 byte addressability and a 4 bit address space,
-    how many bytes of memory does that computer have?
-  </p>
-</li><!-- End of Question -->
-
-
-<li><!-- Begin Question --><font color=red >(Added on 09/18/2013)</font><br/>
-
-	<p> Draw the transistor level circuit of a 2 input XOR gate </p>
-
-</li><!-- End of Question -->
-
-      <p></p>
 
 
     </ol>
