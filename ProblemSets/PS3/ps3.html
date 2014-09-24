@@ -16,18 +16,12 @@ of Electrical and Computer Engineering<o:p></o:p></span></h2>
 University of Texas at Austin<o:p></o:p></span></h3>
 
 <p class=MsoNormal><span style='mso-fareast-font-family:"Times New Roman";
-color:black'>EE 306, Fall 2013<br>
+color:black'>EE 306, Fall 2014<br>
 Problem Set 3<br>
-Due: 7 October, before class<br>
-Yale N. <span class=SpellE>Patt</span>, Instructor<br>
-TAs: </span>Ben Lin, <span class=SpellE>Mochamad</span> <span class=SpellE>Asri</span>,
-<span class=SpellE>Ameya</span> <span class=SpellE>Chaudhari</span>, Nikhil <span
-class=SpellE>Garg</span>, Lauren <span class=SpellE>Guckert</span>, <br>
-&nbsp;&nbsp;&nbsp;Jack Koenig, <span class=SpellE>Saijel</span> <span
-class=SpellE>Mokashi</span>, <span class=SpellE>Sruti</span> <span
-class=SpellE>Nuthalapati</span>, <span class=SpellE>Sparsh</span> <span
-class=SpellE>Singhai</span>, <span class=SpellE>Jiajun</span> Wang<span
-style='mso-fareast-font-family:"Times New Roman";color:black'><o:p></o:p></span></p>
+Due: <font color=red> October 6th, at the beginning of class</font><br>
+Aater Suleman, Instructor<br>
+TAs: Owais Khan, Cagri Eryilmaz and Chirag Sakhuja <br>
+<p>
 
 <p style='margin-bottom:12.0pt'><span style='color:black'>Instructions: <br>
 You are encouraged to work on the problem set in groups and turn in one problem
@@ -35,13 +29,65 @@ set for the entire group. Remember to put all your names on the solution sheet.
 Also, remember to put the name of the TA and the time for the discussion
 section you would like the problem set turned back to you. Show your work. <o:p></o:p></span></p>
 
-<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo2;
-tab-stops:list .5in'><![if !supportLists]><span style='mso-fareast-font-family:
-"Times New Roman";color:black'><span style='mso-list:Ignore'>1.<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><i><span
-style='color:black'>Elevator Problem Revisited</span></i><span
-style='color:black'><br>
-Recall the elevator controller problem on Problem Set 2. You were asked to
+<ol type=1>
+<li><!-- Begin Question -->(3.19) <br>
+      Logic circuit 1 in Figure 3.36 (page 87 of the book) has inputs A, B,
+      C. Logic circuit 2 in Figure 3.37 (page 87 of the book) has inputs A
+      and B. Both logic circuits have an output D. There is a fundamental
+	difference between the behavioral characteristics of these two
+	circuits. What is it? <i>Hint</i>: What happens when the voltage at
+	input A goes from 0 to 1 in both circuits? <br>
+</li><!-- End of Question --><br>
+
+<li><!-- Begin Question -->(Adapted from 3.22) <br>
+	A) Implement a 4-to-1 mux using only 2-to-1 muxes making sure to properly
+	connect all of the terminals. Remember that you will have 4 inputs (A, B, C, and D), 2
+	control signals (S1 and S0), and 1 output (OUT). After implementing the 4-1 mux, 
+	fill in the truth table below. <br>	
+	B) Implement F = A xor B using ONLY two 2-to-1 muxes. You are not allowed to use a not gate (A' and B' are not available).
+	<br><br>
+      
+	<img src="ps3_files/mux_table.jpg"><br>
+
+</li><!-- End of Question --><br>
+
+<li><!-- Begin Question --> (3.26) <br>
+	Recall that the adder was built with individual "slices" that produced
+	a sum bit and carryout bit based on the two operand bits A and B and
+	the carryin bit. We called such an element a full-adder. Suppose we
+	have a 3-to-8 decoder and two six-input OR gates, as shown in Figure 1
+	below. Can we connect them so that we have a full-adder? If so, please
+	do. (<i>Hint</i>: If an input to an OR gate is not needed, we can
+	simply put an input 0 on it and it will have no effect on anything. For
+	example, see the figure below.)<br>
+    <center><!-- FIGURE 3 (Decoder) GOES HERE --><br>
+    <img src="ps3_files/decoder.gif"><br>
+
+Figure 1<br>
+    <br>
+    </center>
+  </li><!-- End of Question -->
+
+<li><br><!-- Begin Question -->
+We wish to design a controller for an elevator such that if you push a button for a desired floor, the controller will output the floor number that the elevator should go to.  However, to deter lazy people from going up or down one floor, if you push the button for the next floor (up or down), the elevator will stay on its current floor. If you push the button for the same floor that you're currently on, the controller will output the current floor number. There are four floors in the building.</p>
+  <p>
+Your job: construct a complete truth table for the elevator controller.
+It is not necessary to draw the logic here; the truth table is sufficient.
+</p>
+Hint: What information does the controller need in order to output the floor to go to?
+</p>
+
+<p>
+Hint: How many input bits will that require.
+</p>
+
+  <p>
+  Hint: How many output bits will the controller have to supply.
+</p></li><!-- End of Question -->
+
+<br>
+<li><br>
+In the previous problem (Problem 4), you were asked to
 design the truth table for an elevator controller such that the option to move
 up or down by one floor is disabled. If there is a request to move only one
 floor or to move zero floors, the elevator should remain on the current floor.
@@ -50,19 +96,81 @@ circuit for an elevator controller which performs the same operation. You can
 assume that the building the elevator is in has 4 floors. The input to the
 state machine is the next requested floor. There will be a state for each floor
 the elevator could be on. Draw a finite state machine that describes the
-behavior of the elevator controller. How many bits are needed for the inputs? <o:p></o:p></span></p>
+behavior of the elevator controller. How many bits are needed for the inputs? </li><br>
 
-<ol start=2 type=1>
- <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
-     auto;mso-list:l2 level1 lfo2;tab-stops:list .5in'><!-- Begin Question --><span
-     style='mso-fareast-font-family:"Times New Roman"'><!-- End of Question -->(3.33<span
-     class=GramE>)</span><br>
+<li> <!-- Begin Question --> <br/>
+We want to make a state machine for the scoreboard of the Texas vs. Oklahoma Football game. The following information is required to determine the state of the game:
+ 
+<br> 
+<br> 
+1. Score: 0 to 99 points for each team
+<br> 
+2. Down: 1, 2, 3, or 4
+<br> 
+3. Yards to gain: 0 to 99
+<br> 
+4. Quarter: 1, 2, 3, 4
+<br> 
+5. Yardline: any number from Home 0 to Home 49, Visitor 0 to Visitor 49, 50
+<br> 
+6. Possesion: Home, Visitor
+<br> 
+7. Time remaining: any number from 0:00 to 15:00, where m:s (minutes, seconds)
+
+<br> 
+(a) What is the minimum number of bits that we need to use to store the state required?
+<br>
+(b) Suppose we make a separate logic circuit for each of the seven elements on the scoreboard, how many bits would it then take to store the state of the scoreboard?
+<br>
+(c) Why might the method of part b be a better way to specify the state than the method of part a?
+</li><!-- End of Question --><br>
+
+
+<li> <!-- Begin Question --> <br/>
+
+Shown below is a partially completed state diagram of a finite state machine that takes an input string of H (heads) ant T (tails) and produces an output of 1 every time the string HTHH occurs. <br> 
+<center>
+	<img src = ps3_files/HT_state_machine.jpg height = 55%> <br>
+	Figure 2 <br>
+</center>
+
+<ol type="a">
+	<li> Complete the state diagram of the finite state machine that will do this for any input sequence of any length </li>
+	<li> If this state machine is implemented with a sequential logic circuit how many state variables will be needed? </li>
+</ol>
+	
+ </li> <!-- End of Question -->
+
+
+<li><!-- Begin Question --><br/>
+ A logic circuit consisting of 6 gated D latches and 1 inverter is shown below:
+
+    <center><!-- FIGURE 3 (Decoder) GOES HERE --><br>
+    <img src="ps3_files/latches.gif"><br>
+
+Figure 3<br>
+    <br>
+	<img src="ps3_files/clock.jpg"><br>
+
+	Figure 4<br>
+	<br>
+    </center>
+Let the state of the circuit be defined by the state of the 6 D latches.
+Assume initially the state is 000000 and clk starts at the point labeled t0.
+<br>
+Question: What is the state after 50 cyles.  How many cycles does it take
+for a specific state to show up again?
+<br>
+<br>
+
+</li><!-- End of Question -->
+
+
+<li><!-- Begin Question --> (3.33)<br>
      Using Figure 3.21 on page 69 in the book, the diagram of the, 2<sup>2</sup>-by-3-bit
-     memory.<o:p></o:p></span></li>
- <ol start=1 type=a>
-  <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
-      auto;mso-list:l2 level2 lfo2;tab-stops:list 1.0in'><span
-      style='mso-fareast-font-family:"Times New Roman"'>To read from the fourth
+     memory.
+ <ol type=a>
+  <li>To read from the fourth
       memory location, what must the values of </span><span class=GramE><code><span
       style='font-size:10.0pt'>A[</span></code></span><code><span
       style='font-size:10.0pt'>1:0]</span></code><span style='mso-fareast-font-family:
@@ -81,14 +189,10 @@ behavior of the elevator controller. How many bits are needed for the inputs? <o
       address all 60 locations in our memory from part (b). How many additional
       memory locations could be added to this memory without having to alter
       the width of the program counter?<o:p></o:p></span></li>
- </ol>
-</ol>
+ </ol></li>
 
-<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo2;
-tab-stops:list .5in'><![if !supportLists]><span style='mso-fareast-font-family:
-"Times New Roman";color:black'><span style='mso-list:Ignore'>3.<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-style='color:black'>The figure below is a diagram of a 2<sup>2</sup>-by-16-bit
+<li><br>
+The figure below is a diagram of a 2<sup>2</sup>-by-16-bit
 memory, similar in implementation to the memory of Figure 3.21 in the textbook.
 Note that in this figure, every memory cell represents <b>4 bits</b> of storage
 instead of <b>1 bit</b> of storage. This can be accomplished by using 4 Gated-D
@@ -102,7 +206,7 @@ auto;margin-left:.5in;text-align:center'><span style='mso-fareast-font-family:
 </span><span style='mso-fareast-font-family:"Times New Roman";color:black;
 mso-no-proof:yes'><img src="ps3_files/4bit_memory.png"></span><span
 style='mso-fareast-font-family:"Times New Roman";color:black'><br>
-<b>Figure 3: 2<sup>2</sup>-by-16 bit memory</b> <o:p></o:p></span></p>
+Figure 5: 2<sup>2</sup>-by-16 bit memory <o:p></o:p></span></p>
 
 <ol start=3 type=1>
  <ol start=1 type=a>
@@ -306,12 +410,7 @@ style='mso-fareast-font-family:"Times New Roman";color:black'><br>
   </td>
  </tr>
 </table>
-
-<p style='margin-left:.5in;text-indent:-.25in;mso-list:l2 level1 lfo2;
-tab-stops:list .5in'><![if !supportLists]><span style='mso-fareast-font-family:
-"Times New Roman";color:black'><span style='mso-list:Ignore'>4.<span
-style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
-style='color:black'>(3.41<span class=GramE>)</span><br>
+<li>(3.41)<br>
 The IEEE campus society office sells sodas for 35 cents. Suppose they install a
 soda controller that only takes the following three inputs: nickel, dime, and
 quarter. After you put in each coin, you push a pushbutton to register the
@@ -322,18 +421,13 @@ much money has been put in (Hint: There will be seven of those states). Once
 enough money has been put in it, the controller will go to a final state where
 the person will receive a soda and proper change (Hint: There are five such
 final states). From the final state, the next coin that is put in will start
-the process again, contributing to the next purchase. <o:p></o:p></span></p>
+the process again, contributing to the next purchase. </li><br>
 
-<p style='margin-top:5.0pt;margin-right:0in;margin-bottom:12.0pt;margin-left:
-.5in;text-indent:-.25in;mso-list:l2 level1 lfo2;tab-stops:list .5in'><![if !supportLists]><span
-style='mso-fareast-font-family:"Times New Roman";color:black'><span
-style='mso-list:Ignore'>5.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
-</span></span></span><![endif]><span style='color:black'>(Adapted from 3.30)<br>
+<li>(Adapted from 3.30)<br>
 A comparator circuit has two 1-bit inputs, A and B, and three 1-bit outputs, G
 (greater), E (equal), and L (less than). Refer to figures 3.40 and 3.41 on page
-92 in the book for this problem.<o:p></o:p></span></p>
+92 in the book for this problem.</li>
 
-<ol start=5 type=1>
  <ol start=1 type=a>
   <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
       auto;mso-list:l2 level2 lfo2;tab-stops:list 1.0in'><span
@@ -360,20 +454,17 @@ A comparator circuit has two 1-bit inputs, A and B, and three 1-bit outputs, G
       L[2], ... L[0]. (Hint: You may not need to use all 12 inputs.)</span><span
       style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
  </ol>
-</ol>
 
 <p class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
 margin-left:1.0in'><span style='mso-fareast-font-family:"Times New Roman";
 color:black'><o:p>&nbsp;</o:p></span></p>
 
-<ol start=6 type=1>
  <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
-     auto;mso-list:l2 level1 lfo2;tab-stops:list .5in'>Suppose that an
+     auto;mso-list:l2 level1 lfo2;tab-stops:list .5in'><br>Suppose that an
      instruction cycle of the LC-3 has just finished and another one is about
      to begin. The following table describes the values in select LC-3
      registers and memory locations:<span style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></li>
-</ol>
-
+<br>
 <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
  style='margin-left:.5in;border-collapse:collapse;mso-yfti-tbllook:1184;
  mso-padding-alt:0in 5.4pt 0in 5.4pt'>
@@ -1112,12 +1203,8 @@ color:black'>3003</span></code><span style='color:black'> can be interpreted as
 </span><code><span style='font-size:10.0pt;color:black'>LDR</span></code><span
 style='color:black'> instructions.<o:p></o:p></span></p>
 
-<ol start=7 type=1>
- <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
-     auto;mso-list:l2 level1 lfo2;tab-stops:list .5in'><span style='mso-fareast-font-family:
-     "Times New Roman"'>(4.8)<br>
-     Suppose a 32-bit instruction has the following format:<o:p></o:p></span></li>
-</ol>
+ <li>(4.8)<br>
+ Suppose a 32-bit instruction has the following format:</li>
 
 <table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0
  style='margin-left:.5in;border-collapse:collapse;mso-yfti-tbllook:1184;
@@ -1161,11 +1248,10 @@ style='color:black'> instructions.<o:p></o:p></span></p>
  </tr>
 </table>
 
-<p style='margin-left:.5in'><span style='color:black'>If there are 255 <span
+<p>If there are 255 <span
 class=SpellE>opcodes</span> and 120 registers, and every register is available
 as a source or destination for every <span class=SpellE>opcode</span>,<o:p></o:p></span></p>
 
-<ol start=7 type=1>
  <ol start=1 type=a>
   <li class=MsoNormal style='color:black;mso-margin-top-alt:auto;mso-margin-bottom-alt:
       auto;mso-list:l2 level2 lfo2;tab-stops:list 1.0in'><span
@@ -1186,7 +1272,6 @@ as a source or destination for every <span class=SpellE>opcode</span>,<o:p></o:p
       style='mso-fareast-font-family:"Times New Roman"'> bits in the
       instruction encoding?<o:p></o:p></span></li>
  </ol>
-</ol>
 
 <p class=MsoNormal style='margin-left:.5in'><span style='mso-fareast-font-family:
 "Times New Roman";color:black'><br style='mso-special-character:line-break'>
