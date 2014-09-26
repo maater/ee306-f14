@@ -1,0 +1,220 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  
+    <title>EE 306 - Exam 2 Solutions</title>
+  </head><body bgcolor="white">
+    <center>
+      <h2>&nbsp;Department of Electrical and Computer Engineering</h2>
+                        <h3>The University of Texas at Austin</h3>
+    </center>
+    EE 306, Fall 2004<br>
+    Exam 2 Solutions
+    <br>
+    Yale N. Patt, Instructor<br>
+Siddharth Balwani, Linda Bigelow, Tommy Buell, Jeremy Carrillo, Aamir
+Hasan, Danny Lynch, Rustam Miftakhutdinov, Veynu Narasiman, Vishal
+Parikh, Basit Sheikh
+<br>
+<p>1) Part a) As you know the memory address space of the LC-3 is 16 bits. If the MAR is loaded with the value
+	 xFE00, how does the hardware know to access the Keyboard Status Register or memory location xFE00?
+
+</p><pre><font color="blue">     There is no memory location xFE00, so the address control logic tells the hardware that
+     it is accessing a device register.</font></pre>
+
+<p>Part b) The following assembly program is assembled, and run on the LC-3 Simulator.
+
+</p><pre>           .ORIG    x3000
+            LD      R0, ASCII0
+            TRAP    x21
+            TRAP    x21
+            TRAP    x21
+            TRAP    x21
+            TRAP    x21
+            TRAP    x25
+     ASCII0 .FILL   x30
+            .END</pre>
+<p>Before it is executed, you set a breakpoint at x3003. What happens?
+
+</p><pre><font color="blue">     The number "0" is output twice, then the process
+     stops.</font></pre>
+
+<p>Part c) At the end of an LD instruction midway through the execution of an LC-3 program, the
+contents of the condition codes are set as follows: N=1, Z=1, P=0. What can you infer?
+
+</p><pre><font color="blue">     This is impossible, so the machine is broken. Note: there is no
+     instruction that can cause this to happen.</font></pre>
+
+<p>Part d) There are three addressing modes available to the assembly language programmer who
+wishes to load a value from memory into R5. If the load instruction is in a loop and each time
+through the loop, the next consecutive memory location is loaded into R5, which addressing mode
+is most appropriate to use? Explain why.
+
+</p><pre><font color="blue">     Base Register + offset (LDR), just increment the register holding 
+     the address in each iteration.</font></pre><font color="blue"></font>
+
+<p>2) What is the output of the following program?
+
+</p><pre>         .ORIG x3000
+          LD       R1, LETA
+          LEA      R0, BUFFER
+          STR      R1, R0, #0
+          ADD      R1, R1, #1
+	  STR      R1, R0, #1
+          ADD      R1, R1, #1
+	  STR      R1, R0, #2
+          ADD      R1, R1, #1
+	  STR      R1, R0, #3
+	  TRAP     x22
+	  LD       R0, LF
+	  TRAP     x21
+	  LEA      R0, STRING
+	  TRAP     x22
+	  TRAP     x25
+   LF     .FILL    x000A
+   LETA   .FILL    x0041
+   BUFFER .BLKW    #4
+   STRING .STRINGZ "EFGH"
+          .END</pre>
+
+<pre><font color="blue">     ABCDEFGH
+     EFGH</font></pre>
+
+<p>3) Part a) Reverse-assemble the binary program (convert the binary program into an assembly
+language program). Most of the instructions have already been reverse-assembled for you, so
+your job is to complete the task.
+
+</p><pre>         .ORIG x3000       0011000000000000
+         AND R0, R0, x0    0101000000100000
+         AND R1, R1, x0    0101001001100000
+         ADD R1, R1, x9    0001001001101001
+         <font color="blue">BRn EE</font>            0000100000000100
+	 LD  R2, FF        0010010000001000
+	 LEA R3, FF
+	 <font color="blue">STR R1, R3, #2</font>    0111001011000010
+	 LEA R7, DD        1110111000000011
+     EE  NOT R5, R5        1001101101111111
+	 BRnz DD           0000110000000001
+	 NOT R4, R3        1001100011111111
+     <font color="blue">DD  LDR R6, R2, #1</font>    0110110010000001
+	 TRAP x25          1111000000100101
+     <font color="blue">FF  .FILL xD000</font>       1101000000000000
+         .FILL xFF00       1111111100000000
+	 .FILL xFAFA       1111101011111010
+	 .END</pre>
+
+<p>Part b) Generate the symbol table that an LC-3 assembler would create while assembling this
+program. You may not need all of the spaces provided.
+
+</p><pre><font color="blue">     Symbol  Address
+     EE      x3008
+     DD      x300B
+     FF      x300D</font></pre><font color="blue"></font>
+
+<p>4) The input to the logic circuit is the 16 bits of the MAR. What information does the output
+provide?
+
+</p><pre><font color="blue">  The output is a 1 if the address in the MAR points to a device register (KBSR,
+     KBDR, DDR, DSR). Note: This is performed by the address control logic.</font></pre><font color="blue"></font>
+
+<p>5) The following program has been assembled and loaded into the LC-3 simulator. A breakpoint has been
+set on the TRAP x25 instruction. Your job is to trace the execution of the program until the breakpoint
+is reached. By trace we mean record the value of the PC at the beginning of each instruction in the order
+that they are executed. The first few have been done for you. You may not need all of the spaces provided.
+
+</p><p>Note: The instruction labeled A is at location x0100 in memory, and the instruction labeled START is at
+location x3000 in memory.
+
+</p><pre>            .ORIG x0000
+            .FILL x0100
+	    .FILL x0101
+	    .FILL x0102
+	    .FILL x0103
+	    .FILL x0104
+	    .FILL x0105
+	    .FILL x0106
+	    .BLKW x00F9
+     A      RET                ; LOCATION x0100
+	    RET
+	    RET
+	    RET
+	    RET
+	    RET
+	    RET
+	    .BLKW x2EF9
+     START  AND R0, R0, #0     ; LOCATION x3000
+	    BRz L1
+	    LD R0, DATA
+     L1	    NOT R0, R0
+	    BRn L2
+	    TRAP x05
+     L2     TRAP x06
+	    AND R0, R0, #0
+	    TRAP x25
+     DATA   .FILL x4040
+	 		.END
+	 </pre>
+
+<pre><font color="blue">     PC Trace
+     x3000
+     x3001
+     x3003
+     x3004
+     x3006
+     x0106
+     x3007
+     x3008</font></pre><font color="blue"></font>
+
+<p>7) What does the following program do?
+
+</p><pre>            .ORIG x3000
+            AND R5, R5, #0
+	    AND R3, R3, #0
+	    ADD R3, R3, #8
+	    LEA R0, BB
+	    LDR R1, R0, #1
+	    LDR R1, R1, #0
+	    ADD R2, R1, #0
+     AGAIN  ADD R2, R2, R2
+	    ADD R3, R3, #-1
+	    BRp AGAIN
+	    LDR R4, R0, #0
+	    AND R1, R1, R4
+	    NOT R1, R1
+	    ADD R1, R1, #1
+	    ADD R2, R2, R1
+	    BRnp  NO
+	    ADD R5, R5, #1
+     NO     TRAP x25
+     BB     .FILL xFF00
+	    .FILL x4000
+	    .END</pre>
+
+<pre><font color="blue">     It puts 1 in R5 if the high byte of the data in location x4000
+     is equal to the low byte of the data in location x4000.</font></pre><font color="blue"></font>
+
+<p>7) The table below shows a snapshot of the Program Counter, the 8 registers, and the
+condition codes (CC) of the LC-3 at six different times during the execution of a program:
+before the program executes, after the execution of instruction 1, after the execution 
+of instruction 2, after the execution of instruction 3, after the execution of instruction 
+4, and after the execution of instruction 5. Fill in the missing values in the table as 
+well as the missing parts of instructions 1, 4, and 5.
+
+</p><pre>          Initial   After 1st  After 2nd  After 3rd  After 4th  After 5th
+     CC      Z          N          <font color="blue">P</font>          P          N          <font color="blue">P</font>
+     PC     <font color="blue">x3300    x3301      x3302      x3303       x3304      x3305</font>
+     R0     x0000    <font color="blue">x0000      x0000</font>      x0000       x0000      x0000
+     R1     x1111    x1111      x1111      x1111       x1111      x1111
+     R2     x2222    x2222      x2222      x2222       x2222      x2222
+     R3     x3333    x3333      x3308      x3308       x3308      x3308
+     R4     x4444    x4444      x4444      <font color="blue">x3303</font>       x9FFF      x9FFF
+     R5     x5555    x5555      x5555      x5555       x5555      x5555
+     R6     x6666    x6666      x6666      x6666       x6666      x6666
+     R7     xFEFE    <font color="blue">xFEF0</font>      xFEF0      xFEF0       xFEF0      <font color="blue">x010F</font>
+
+
+     Instruction 1: AND <font color="blue">R7, R7, #-16</font>
+     Instruction 2: LEA R3, #6
+     Instruction 3: LEA R4, #0
+     Instruction 4: LD <font color="blue">R4</font>, #0
+     Instruction 5: <font color="blue">NOT R7, R7</font></pre>
+</body></html>

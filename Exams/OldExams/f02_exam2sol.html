@@ -1,0 +1,89 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<title>Fall 2002 Exam 2 Solutions</title>
+</head><body>
+<h4><font color="red">WARNING: THIS SOLUTION ASSUMES AN LC-2 ISA<br></font><p>
+<font color="red">There are important changes from the LC-2 to the LC-3.  Some of the instructions
+are encoded differently for the two ISAs, and some of those differences
+are subtle. Therefore, some of the solutions that are provided may not be correct in terms of the LC-3.</font></p></h4>
+<pre>Problem 1 (18 pts)
+Part 1 (6 pts)
+- SENTINEL
+- It is not a part of the data set
+
+Part 2 (6 pts)
+
+MUL Ri, Rj, Rk - It is the most complicated of all the instructions.
+- MOVE Ri, Rj can be implemented with ADD Ri, Rj, Rk
+- NAND Ri, Rj, Rk can be implemented with AND Ri, Rj, Rk followed by NOT Ri
+- SHFL Ri, Rj, #2 can be implemented using MUL
+
+Part 3 (6 pts)
+Code w/out STI
+
+      .ORIG	x3000
+      LD	R0, CONST
+      LD	R1, B		; solution
+      STR	R0, R1, #0	; solution
+      TRAP	x25
+CONST .FILL	x0048
+B     .FILL	xF3FF
+      .END
+
+Problem 2 (15 pts)
+Symbol Table
+D      x3001
+E      x3004
+B      x3005
+F      x3007
+A      x300A
+C      x300B
+
+Instruction   Machine Code
+D	      0010 001 000001010
+E	      0001 001 001 1 11111
+F	      0000 001 000000101
+
+Descr of program:
+Adds up the odd numbers less than or equal to the value stored at A.
+
+Problem 3 (10 pts)
+After the zero in R0 is stored to x3007, the trap x22 terminates early, resulting in the following being printed to the screen:
+
+FUN
+
+Problem 4 (10 pts)
+R0	xA400
+R1	x2201
+R2	xE000
+R3	xA404
+R4	x0000
+R5	x0000
+R6	x0000
+R7	x0000
+
+Problem 5 (10 pts)
+Error # 1
+Line 8, Assemble Time, Undefined symbol SUM
+
+Error # 2
+Line 3, Run Time, Used uninitialized register R1 as source operand
+
+Problem 6 (15 pts)
+Push R4
+Push R1
+Pop  R0
+Push R3
+Pop  R2
+Pop  R7
+
+Problem 7 (20 pts)
+Missing instructions (in order from top of page)
+
+ADD	R1, R1, #1
+TRAP	x25
+ADD	R0, R0, #5
+BRzp	K
+</pre>
+</body></html>
