@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>
+	Programming Assignment 1
+</title>
+</head>
+<body text="#000000" vlink="#51188e" alink="#ff0000" bgcolor="#ffffff" link="#0000ef">
+
+    <center>
+      <h2>Department of Electrical and Computer Engineering</h2>
+      <h3>The University of Texas at Austin</h3>
+    </center>
+    EE 306, Fall 2014<br>
+    Programming Assignment 1<br>
+    Due:  October 5th, 11:59 pm <br>
+	Aater Suleman, Instructor<br>
+    TAs: Owais Khan, Cagri Eryilmaz and Chirag Sakhuja <br>
+	
+
+    <p>
+	 You must do every programming assignment by yourself. You are permitted to
+	 get help ONLY from the TAs and the instructor. When you have completed the
+	 program, and tested it sufficiently so that you are comfortable that it
+	 works on any input (i.e., value initially stored in x3100), submit it for
+	 grading according to the submission instructions at the end of this handout.
+</p><p><br><b><u>Counting the  number of 1s in a 16-bit Bit Vector
+</u></b>
+</p>
+
+<p>
+<b>Your Job:</b> 
+
+The addressability of the LC-3 is 16 bits; i.e., each memory location contains
+16 bits of data. In this assignment, you are asked to write a program in LC-3
+machine language to count the number of 1s in a 16-bit word, and store the
+result back in memory. Counting the number of occurrences of 1 means counting
+the number of times the 1 shows up in the entire 16 bit word.
+</p>
+
+<p>
+<b>Some examples:</b>
+</p>
+&nbsp&nbsp&nbsp&nbsp     1111111111111110 has 15 occurrences of "1" <br>
+&nbsp&nbsp&nbsp&nbsp     0101010101010101 has 8 occurrences of "1" <br>
+&nbsp&nbsp&nbsp&nbsp     0000000100000000 has 1 occurrence of "1"  <br>
+&nbsp&nbsp&nbsp&nbsp     1110110001100001 has 8 occurrences of "1" <br>
+
+<p>
+Your program should assume that the input word is stored in memory location
+<b>x3100</b>. Your program should store the output count in memory location <b>x3101</b>.
+Your program should start at memory location <b>x3000</b>, and should halt the
+machine after storing the output to memory location <b>x3101</b>. So for example,
+if the memory location x3100 contains the word 1110110001100001, then your
+program should store the value 0000000000001000(which is 8 in decimal) in
+memory location x3101, then halt.
+</p>
+
+<p>
+<b>Note:</b> Familiarize yourself with the software and documentation, and the
+submission instructions well before the deadline so that you can get help
+from a TA if you cannot figure out the mechanics by yourself. It is
+unreasonable to expect Professor Suleman or a TA to help you submit your
+program at 11:45pm on the day the program is due simply because you left
+this for the last minute, and have discovered that you do not know how to
+do it by yourself.
+</p>
+<p>
+<b>Simulator/Testing Hint:</b> You can test your program by setting the value of
+memory location x3100 before you run your program on the LC-3 simulator. On
+Windows machines, you can click on "Simulate" on the menubar and select
+"Set Value". You can also just press F4 and the "Set Value" dialog box will
+pop up. Finally, double-clicking on the contents of a memory location will
+also cause the "Set Value" dialog box to pop up.
+</p>
+<p>
+Make sure you set a breakpoint before you run your program so that your
+program will stop just before it executes the trap instruction. This will
+allow you to examine the contents of x3101 after your program has finished
+executing, but before control is turned over to the operating system to
+halt your program.
+
+</p>
+
+Follow the following steps:
+<ul>
+
+<li> <b>Get Lab1 fike from GitHub:</b> Follow the procedure on <a
+href="http://maater.github.io/ee306-f14/Software/submission.html"> submission
+instructions</a> under <b>Updating Your Submission Directory</b>  to get the
+file <font color=red> count.bin </font> from GitHub. You will be writing your
+program in the count.bin file. </li>
+
+<li> <b>Write your program:</b> Open count.bin in the LC3Edit text editor. The
+first line of your program must specify the memory address of the first
+instruction of your program. For this assignment, you should place your program
+starting at x3000 (i.e., the first line of your program should contain the bit
+pattern 0011000000000000). Each subsequent line of your program will consist of
+16 consecutive 0s and 1s corresponding to the bits of that instruction. For
+example, you would represent the instruction to add the contents of R1 to the
+contents of R2 and put the result in R0 by: 0001000001000010. A program
+represented in this way is called a .bin file. </li>
+
+<li><b>  Test your program:</b> First convert your .bin file to an .obj file. Then
+load the .obj file into the LC-3 Simulator and test thoroughly by running
+it with multiple different input values. Read the <a href =
+https://maater.github.io/ee306-f14/software.html> Software and
+	Documentation </a> section for more help on how to use the simulator. In the
+real world, writing a program is never finished until the program has been
+thoroughly tested on lots of different input data. In fact, thorough
+testing separates the serious programmers from the dilettantes. Thorough
+testing means using odd-ball data (we call them "corner cases"), not just
+straightforward data.</li>
+
+<li> <b> Submit your program:</b> The program you are to submit is the count.bin
+file.  Follow the <a
+href="http://maater.github.io/ee306-f14/Software/submission.html"> submission
+instructions</a> procedure under <b>Submitting Your Program</b> for uploading
+your count.bin file for grading.</li> </ul> Note: We understand that to test
+your program, you must first create a .obj file. The .obj file is not to be
+submitted for grading. We will create a .obj file from your .bin file when we
+grade your program.
+
+
+</body></html>
