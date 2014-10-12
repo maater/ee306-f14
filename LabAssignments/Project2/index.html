@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>
+	Programming Assignment 2
+</title>
+</head>
+<body text="#000000" vlink="#51188e" alink="#ff0000" bgcolor="#ffffff" link="#0000ef">
+
+    <center>
+      <h2>Department of Electrical and Computer Engineering</h2>
+      <h3>The University of Texas at Austin</h3>
+    </center>
+    EE 306, Fall 2013<br>
+    Programming Assignment 2<br>
+    Due:  October 20th, 11:59 pm<br>
+	 Yale N. Patt, Instructor<br>
+    TAs:Ben Lin, Mochamad Asri, Ameya Chaudhari, Nikhil Garg, Lauren Guckert,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jack Koenig, Saijel Mokashi, Sruti Nuthalapati, Sparsh Singhai, Jiajun Wang<br>
+	 
+
+	 <p>
+	 You must do every programming assignment by yourself. You are permitted to get help ONLY from the TAs and the instructor. When you have completed the program, and tested it sufficiently so that you are comfortable that it works on any input (i.e., values initially stored in the arrays starting in x3100 and x3200), submit it for grading according to the submission instructions at the end of this handout. 
+</u></b>
+</p>
+
+<p>
+<b><u> Scheduling a room on campus </u></b><br>
+<br>
+In this assignment, you will write a program to schedule access to a particular room on campus. The room is available to the public only on Saturdays but is available for the entire day (i.e. for all 24 hours on Saturday). Throughout the week, users who wish to reserve the room submit a request through a online reservation system. The reservation system then encodes each request into a 16-bit word:
+<ul>
+	<li>Bits [15:11] - Five bits to encode the start time of the reservation as an unsigned integer. For example, "01101" is 13, meaning the reservation starts at 13:00 (1:00pm) </li>
+	<li>Bits [10:6] - Five bits to encode the end time of the reservation as an unsigned integer. For example, "10011" is 19, meaning the reservation ends at 19:00 (7:00pm) </li>
+	<li> Bits [5:0] - Six bits to encode the ID of the requesting user. Valid IDs range from 000001 (1) to 111111(63). The user ID 000000 (0) is reserved. </li>
+</ul>
+	</p>
+	 <p>
+So 01101 10011 100101 would represent a request from user 37 for the room from 13:00 (1:00pm) to 19:00 (7:00pm). Note that with our scheme, the start and end times of a reservation have to be at hourly boundaries (e.g. you cannot book a room just from 1:00pm to 1:30pm).
+	</p>
+
+	 <p>
+Requests for the room are accepted throughout the week, Sunday through Friday. During the day, incoming requests for the room are stored into an array starting at memory location x3200. The requests in the array are ordered by time of request reception, so the request at location x3200 was received before the request at location x3201, which was received before the request at location x3202, and so on. The end of the array is marked by the special value x0000.
+	</p>
+
+	 <p>
+The current state of the room is stored in an array starting at memory location x3100. The 24 memory locations starting from location x3100 represent the existing reservations for the room: location x3100 holds the ID of the user occupying the room from 00:00 to 01:00; location x3101 holds the ID of the user occupying the room from 01:00 to 02:00, and so forth. Location x3117 will hold the ID of the user occupying the room for the last time slot, 23:00 to 24:00 (note: 24:00 is 00:00 of the next day). If a room is available (i.e. unbooked) for a given hourly slot, then the memory location for that slot will simply contain the value x0000. For example, if memory location x3104 contained the value x0000, then this means the slot from 04:00 to 05:00 is available. Remember we restricted the range of valid user IDs from 1 to 63, so we can safely use the value x0000 to denote an available time slot. Note that there may already be reservations in place (from previous days) before you even begin to process requests for today; that is, you *cannot* assume that the memory locations x3100 through to x3117 will all initially contain x0000.
+</p>
+
+	 <p>
+<b>Your job</b>: At the end of the day, your program will run and process through all the received requests for that day, starting in order from the earliest request at location x3200. For each request, your program will check if the request conflicts with any existing reservations for the room. If <b>any</b> of the requested time slots is already taken by <b> another</b> user, then the <b> entire</b> request is ignored and you move on to the next request; otherwise, if there is no conflict (meaning <b> all</b> the requested time slots are either unoccupied <b>or</b> occupied by the <b>same</b> user making the request), then the array starting at location x3100 is updated to reflect the new state of the room after the reservation. Once your program has processed all the requests and updated the array at x3100 accordingly, it should halt. Your program will start at location x3000 as usual.
+</p>
+
+<p>
+<b>For example,</b> if the initial state of the room is as follows:
+<br>
+</p>
+<table border = 1>
+	<colgroup>
+	<col width="80">
+	<col width="80">
+	<col width="300">
+</colgroup>
+	<tr><td align="center">Address</td><td align="center">Value</td><td align="center">Meaning</td></tr>
+	<tr><td align="center">x3100</td><td align="center">x0000</td><td align="center">00:00 to 01:00 unoccupied</td></tr>
+	<tr><td align="center">x3101</td><td align="center">x0000</td><td align="center">01:00 to 02:00 unoccupied</td></tr>
+	<tr><td align="center">x3102</td><td align="center">x0000</td><td align="center">02:00 to 03:00 unoccupied</td></tr>
+	<tr><td align="center">x3103</td><td align="center">x0000</td><td align="center">03:00 to 04:00 unoccupied</td></tr>
+	<tr><td align="center">x3104</td><td align="center">x0001</td><td align="center">04:00 to 05:00 occupied by user 1</td></tr>
+	<tr><td align="center">x3105</td><td align="center">x0001</td><td align="center">05:00 to 06:00 occupied by user 1</td></tr>
+	<tr><td align="center">x3106</td><td align="center">x0000</td><td align="center">06:00 to 07:00 unoccupied</td></tr>
+	<tr><td align="center">x3107</td><td align="center">x0000</td><td align="center">07:00 to 08:00 unoccupied</td></tr>
+	<tr><td align="center">x3108</td><td align="center">x0000</td><td align="center">08:00 to 09:00 unoccupied</td></tr>
+	<tr><td align="center">x3109</td><td align="center">x0000</td><td align="center">09:00 to 10:00 unoccupied</td></tr>
+	<tr><td align="center">x310A</td><td align="center">x0000</td><td align="center">10:00 to 11:00 unoccupied</td></tr>
+	<tr><td align="center">x310B</td><td align="center">x0000</td><td align="center">11:00 to 12:00 unoccupied</td></tr>
+	<tr><td align="center">x310C</td><td align="center">x0000</td><td align="center">12:00 to 13:00 unoccupied</td></tr>
+	<tr><td align="center">x310D</td><td align="center">x0000</td><td align="center">13:00 to 14:00 unoccupied</td></tr>
+	<tr><td align="center">x310E</td><td align="center">x0000</td><td align="center">14:00 to 15:00 unoccupied</td></tr>
+	<tr><td align="center">x310F</td><td align="center">x0000</td><td align="center">15:00 to 16:00 unoccupied</td></tr>
+	<tr><td align="center">x3110</td><td align="center">x0000</td><td align="center">16:00 to 17:00 unoccupied</td></tr>
+	<tr><td align="center">x3111</td><td align="center">x0002</td><td align="center">17:00 to 18:00 occupied by user 2</td></tr>
+	<tr><td align="center">x3112</td><td align="center">x0000</td><td align="center">18:00 to 19:00 unoccupied</td></tr>
+	<tr><td align="center">x3113</td><td align="center">x0000</td><td align="center">19:00 to 20:00 unoccupied</td></tr>
+	<tr><td align="center">x3114</td><td align="center">x0000</td><td align="center">20:00 to 21:00 unoccupied</td></tr>
+	<tr><td align="center">x3115</td><td align="center">x0000</td><td align="center">21:00 to 22:00 unoccupied</td></tr>
+	<tr><td align="center">x3116</td><td align="center">x0000</td><td align="center">22:00 to 23:00 unoccupied</td></tr>
+	<tr><td align="center">x3117</td><td align="center">x0000</td><td align="center">23:00 to 24:00 unoccupied</td></tr>
+</table>
+
+<br>
+<p>
+Then this means that the room is occupied by user 1 from 04:00 to 06:00, and by user 2 from 17:00 to 18:00. All other time slots are available and unoccupied.
+</p>
+ <p>
+ Now, given the following requests starting at location x3200, the results are shown:
+
+<br>
+</p>
+<table border = 1>
+	<col width="80"  >
+	<col width="250" >
+	<col width="275" >
+	<col width="300" >
+	<tr><td align="center">Address</td><td align="center">Value</td><td align="center">Description</td><td align="center">Results</td></tr>
+	<tr></tr>
+<tr><td align="center">x3200</td><td align="center">00101 00111 000011 (x29C3)</td><td align="center">User 3 wishes to reserve from 05:00 to 07:00</td><td align="center">Ignored because 05:00 to 06:00 already occupied by user 1</td></tr>
+<tr><td align="center">x3201</td><td align="center">00111 01001 000011 (x3A43)</td><td align="center">User 3 wishes to reserve from 07:00 to 09:00</td><td align="center">Succeeds because 07:00 to 09:00 is unoccupied; locations x3107 and x3108 set to x0003</td></tr>
+<tr><td align="center">x3202</td><td align="center">01010 10100 000100 (x5504)</td><td align="center">User 4 wishes to reserve from 10:00 to 20:00</td><td align="center">Ignored because 17:00 to 18:00 already occupied by user 2</td></tr>
+<tr><td align="center">x3203</td><td align="center">10001 10100 000010 (x8D02)</td><td align="center">User 2 wishes to reserve from 17:00 to 20:00</td><td align="center">Succeeds because 17:00 to 18:00 is occupied by the same user making the request (user 2), and because 18:00 to 20:00 is unoccupied; locations x3111 through x3113 set to x0002</td></tr>
+<tr><td align="center">x3204</td><td align="center">10100 11000 000100 (xA604)</td><td align="center">User 4 wishes to reserve from 20:00 to 24:00</td><td align="center">Succeeds because 20:00 to 24:00 is unoccupied; locations x3114 through x3117 set to x0004</td></tr>
+<tr><td align="center">x3205</td><td align="center">00000 00000 000000 (x0000)</td><td align="center">end of requests</td><td align="center">-</td></tr>
+
+</table>
+<p>
+<br>
+The array at x3100 is now:
+<br>
+</p>
+<table border = 1>
+	<col width="80" style="text-align:center">
+	<col width="80" style="text-align:center">
+	<col width="300" style="text-align:left">
+	<tr><td align="center">Address</td><td align="center">Value</td><td align="center">Meaning</td></tr>
+	<tr><td align="center">x3100</td><td align="center">x0000</td><td align="center">00:00 to 01:00 unoccupied</td></tr>
+	<tr><td align="center">x3101</td><td align="center">x0000</td><td align="center">01:00 to 02:00 unoccupied</td></tr>
+	<tr><td align="center">x3102</td><td align="center">x0000</td><td align="center">02:00 to 03:00 unoccupied</td></tr>
+	<tr><td align="center">x3103</td><td align="center">x0000</td><td align="center">03:00 to 04:00 unoccupied</td></tr>
+	<tr><td align="center">x3104</td><td align="center">x0001</td><td align="center">04:00 to 05:00 occupied by user 1</td></tr>
+	<tr><td align="center">x3105</td><td align="center">x0001</td><td align="center">05:00 to 06:00 occupied by user 1</td></tr>
+	<tr><td align="center">x3106</td><td align="center">x0000</td><td align="center">06:00 to 07:00 unoccupied</td></tr>
+	<tr><td align="center">x3107</td><td align="center">x0003</td><td align="center">07:00 to 08:00 occupied by user 3</td></tr>
+	<tr><td align="center">x3108</td><td align="center">x0003</td><td align="center">08:00 to 09:00 occupied by user 3</td></tr>
+	<tr><td align="center">x3109</td><td align="center">x0000</td><td align="center">09:00 to 10:00 unoccupied</td></tr>
+	<tr><td align="center">x310A</td><td align="center">x0000</td><td align="center">10:00 to 11:00 unoccupied</td></tr>
+	<tr><td align="center">x310B</td><td align="center">x0000</td><td align="center">11:00 to 12:00 unoccupied</td></tr>
+	<tr><td align="center">x310C</td><td align="center">x0000</td><td align="center">12:00 to 13:00 unoccupied</td></tr>
+	<tr><td align="center">x310D</td><td align="center">x0000</td><td align="center">13:00 to 14:00 unoccupied</td></tr>
+	<tr><td align="center">x310E</td><td align="center">x0000</td><td align="center">14:00 to 15:00 unoccupied</td></tr>
+	<tr><td align="center">x310F</td><td align="center">x0000</td><td align="center">15:00 to 16:00 unoccupied</td></tr>
+	<tr><td align="center">x3110</td><td align="center">x0000</td><td align="center">16:00 to 17:00 unoccupied</td></tr>
+	<tr><td align="center">x3111</td><td align="center">x0002</td><td align="center">17:00 to 18:00 occupied by user 2</td></tr>
+	<tr><td align="center">x3112</td><td align="center">x0002</td><td align="center">18:00 to 19:00 occupied by user 2</td></tr>
+	<tr><td align="center">x3113</td><td align="center">x0002</td><td align="center">19:00 to 20:00 occupied by user 2</td></tr>
+	<tr><td align="center">x3114</td><td align="center">x0004</td><td align="center">20:00 to 21:00 occupied by user 4</td></tr>
+	<tr><td align="center">x3115</td><td align="center">x0004</td><td align="center">21:00 to 22:00 occupied by user 4</td></tr>
+	<tr><td align="center">x3116</td><td align="center">x0004</td><td align="center">22:00 to 23:00 occupied by user 4</td></tr>
+	<tr><td align="center">x3117</td><td align="center">x0004</td><td align="center">23:00 to 24:00 occupied by user 4</td></tr>
+</table>
+	 <p>
+	 <b> Hints:</b>
+	 <ul>
+		 <li>First you need to figure out how to extract the start time, end time, and user ID from the 16-bit word of a request. Come up with a method to extract the start time, end time, and user ID and store the extracted results into three different registers</li>
+		 <li>Once you have the start time, end time, and user ID in registers, figure out how to check if the request conflicts with existing reservations</li>
+		 <li>You may assume that the requests will always be in a valid format: that is, the start and end times will always be between 0 and 24, the end time will always be strictly larger than the start time, and the user ID will always be non-zero</li>
+	 </ul>
+	</p>
+
+	 <p>
+	 <b>Submit your Program:</b>. Read the <a href=http://maater.github.io/ee306-f14/Software/submission.html>submission instructions</a> and follow the <a href=http://maater.github.io/ee306-f14/Software/submission.html#updating_submission_dir>Updating Your submission Directory</a> instructions to obtain a "project2" directory for your programming assignment 2. 
+The program you submit is the <b>.asm file</b>. Save your .asm file, and give it the name "schedule.asm". "schedule.asm" should be saved inside your project2 directory.
+When you feel you are ready to submit your assignment, follow the <a href=http://maater.github.io/ee306-f14/Software/submission.html#submitting_prg>Submitting Your Program</a> instructions to upload your schedule.asm file for grading.
+
+</body></html>
