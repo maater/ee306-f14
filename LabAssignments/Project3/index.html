@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>
+	Programming Assignment 3
+</title>
+</head>
+<body text="#000000" vlink="#51188e" alink="#ff0000" bgcolor="#ffffff" link="#0000ef">
+    <center>
+      <h2>Department of Electrical and Computer Engineering</h2>
+      <h3>The University of Texas at Austin</h3>
+    </center>
+    EE 306, Fall 2014<br>
+    Programming Assignment 3<br>
+    Due:  November 2, 11:59 pm<br>
+    Aater Suleman, Instructor<br>
+    TAs: Owais Khan, Cagri Eryilmaz, and Chirag Sakhuja<br>
+	 <p>
+	 You must do the programming assignment by yourself. You are permitted to get help from ONLY the TAs and the instructor. <b> The file you submit should be an assembly language file called directory.asm</b>. This is the only file you need to submit.
+</p>
+
+<p>
+<b><u> University Directory </u></b><br>
+</p>
+
+<p>
+<b>Overview:</b> <br>
+You will design the user-interface of a university directory that associates each student with a student ID. Your program will prompt the user for a student ID and print the name of the student. For example, if the name of the student with ID 5 is ‘John’, then if the user types ‘5’ at the prompt, your program will print ‘John’.
+</p>
+<p>
+
+<b>Your job:</b><br>
+Write a program in LC-3 assembly language that will (1) prompt the user to type a student ID, (2) search the directory to find the student with the entered ID, (3) print the name of the student on the screen if the student was found in the directory, or print a message saying no such entry exists, if the student was not found in the directory, (4) return to step 1 and prompt the user for another student ID and (5) when the user signals he/she has no more students to look up, then halt the machine. We now discuss each step in turn. 
+<ol>
+
+	<li> <b>Prompting for a student ID:</b> Your program will print on the screen the string "Type a student ID and press Enter:" and wait for the user to enter the student ID, followed by the &ltEnter&gt key. To simplify the program, we will assume that the university has no more than ten students so the student ID consists of a single decimal digit (e.g. one of the digits 0,1,…,9). Once the user has entered the single decimal digit representing the student ID and pressed the &ltEnter&gt key, your program will search the directory for the name associated with the ID. </li> 
+	<li> <b> Searching the directory: </b> The directory stores for each student ID the student’s name. You will find a match for the ID in the directory only if the ID exists in the directory. Note that it is possible to not find a match in the directory. The directory is organized as a data-structure called a binary search tree. The workings of the binary search tree is described below. The address of the first node (the root) of the directory is stored in memory location x3300 before the program is run. </li>
+	<li> <b> Printing the student name: </b>If your program does not find a match for a student ID in the directory, your program must EXACTLY print the string "No Entry" on the screen. If your program finds a match in the directory, your program will print the name. You will then print a line feed character (ASCII code x0A) to the console to bring the cursor to the next line in the console.</li>
+	<li> The program will return to step 1 and prompt the user for another student ID</li>
+	<li> <b> Halting the machine:</b> When the user has no more students to look up, he/she will enter the letter ‘d’ (as opposed to a decimal digit) as the student ID. The ‘d’ stands for “done”. The machine halts after the user enters ‘d’ as the student ID. </li>
+</ol>
+</p>
+<p>
+<b> The Binary Search Tree </b><br><br>
+
+In class, we learned about two different data structures for storing data in order: sequential arrays and linked lists. We showed that sequential arrays perform well when searching for an element, but perform poorly when inserting/deleting an element; conversely, linked lists perform poorly when searching for an element, but perform well when inserting/deleting an element. In this programming assignment we introduce a third data structure, the binary search tree, which has decent performance on BOTH searches and insertions/deletions.
+</p>
+<p>
+Like a linked list, a binary search tree consists of a set of nodes connected to each other via pointers. However, unlike a linked list, each node in the binary search tree contains pointers to two other nodes in the binary search tree. These two nodes are commonly known as the ‘children’ of the parent node. The two children are differentiated as the “left child” and the “right child” of a node. If a node does not have a left child (and/or a right child) the pointer to that child will be x0000. We call x0000 in this context a NULL pointer.
+</p>
+<p>
+For a given node, its descendants are all the nodes that are its children, or children of its children, or children of children of its children, and so forth. Similarly, for a given node, its ancestors are all the nodes that are its parent, or its parent’s parent, and so forth. Think of the way descendants and ancestors work in a family tree. Unlike a family tree, however, each node in a binary search tree only has one parent, and each node has at most two children.
+</p>
+<p>
+A binary search tree wherein each node has a unique identifier has the following special property: The value of the left child of a node is less than the value of the node, and the value of the right child of a node is greater than the value of the node.
+</p>
+<p>
+Furthermore, cycles are not permitted in a binary search tree. That is, a node cannot be both the descendant and ancestor of another node. Equivalently, this means if you start from any node in the tree and keep following pointers, you will eventually reach a node with no children.
+</p>
+<p>
+The following images show two examples of binary search trees. Note that, for a given set of values, there is not a unique binary search tree, as both examples below are valid binary search trees for the same set of values. The particular tree used depends on how it is created. Luckily, you do not have to worry about creating a binary search tree in this program. You are simply searching for a value in it.
+</p>
+<center>
+<table>
+	<colgroup>
+		<col width = 400>
+		<col width = 400>
+	</colgroup>
+	<tr> 
+		<td>
+			<img src=figures/BST.png width=85%> <br><br>
+		</td>
+		<td>
+			<img src=figures/BST2.png width=85%> <br><br>
+		</td>
+	</tr>
+</table>
+Figure 1. Two binary search trees with the same set of data values but different tree structures 
+</center>
+
+	<br><br>
+<br>
+</p>
+<p>
+In general each node in a binary search tree is comprised of k+2 words: two words containing the pointers to its children and k words of data which are stored at the node. In our particular example of a binary search tree representing a directory of student names , each node consists of four words in the following order:
+<ol>
+	<li>The pointer to the left child.</li>
+	<li>The pointer to the right child.</li>
+	<li>The student ID of the student <b>(stored as a numeric value between x0000 and x0009; note we do NOT store the student ID as an ASCII character)</b></li>
+	<li>A pointer to an ASCII string representing the student’s name.</li>
+</ol>
+</p>
+<p>
+Recall that a string consists of ASCII codes stored in consecutive memory locations, one ASCII code per location. The string is null-terminated, i.e., the end of a string is marked by the NULL character which is the value x0000. Below we show an <b>example</b> directory implemented as a binary search tree. This directory contains four nodes: the students with IDs 0, 4, 6, and 9. The node containing the student with ID 6 is at the root of the tree.
+</p>
+<br>
+
+<br>
+<table>
+	<colgroup>
+		<col width = 480>
+		<col width = 640>
+	</colgroup>
+		<tr>
+			<td>
+<table border =1>
+	<colgroup>
+		<col width = "80">
+		<col width = "80">
+		<col width = "300">
+	</colgroup>
+<tr><td>Address</td><td>Contents</td><td>Description</td></tr>
+<tr><td>x3300</td><td>x4000</td><td>Pointer to first node</td></tr>
+<tr><td>... </td><td>... </td><td>... </td></tr>
+<tr><td>x4000</td><td>x4100</td><td>Left Child</td></tr>
+<tr><td>x4001</td><td>x4200</td><td>Right child</td></tr>
+<tr><td>x4002</td><td>x0006</td><td>Student ID</td></tr>
+<tr><td>x4003</td><td>x4050</td><td>Pointer to first ASCII character of student's name</td></tr>
+<tr><td>... </td><td>... </td><td>... </td></tr>
+<tr><td>x4050</td><td>x0042</td><td>ASCII code for "B"</td></tr>
+<tr><td>x4051</td><td>x0045</td><td>ASCII code for "E"</td></tr>
+<tr><td>x4052</td><td>x004E</td><td>ASCII code for "N"</td></tr>
+<tr><td>x4053</td><td>x0000</td><td>NULL character which signifies end of name</td></tr>
+<tr><td>... </td><td>... </td><td>... </td></tr>
+<tr><td>x4100</td><td>x0000</td><td>Left Child (null)</td></tr>
+<tr><td>x4101</td><td>x4250</td><td>Right child </td></tr>
+<tr><td>x4102</td><td>x0000</td><td>Student ID</td></tr>
+<tr><td>x4103</td><td>x4160</td><td>Pointer to first ASCII character of student's name</td></tr>
+<tr><td>... </td><td>... </td><td>... </td></tr>
+<tr><td>x4160</td><td>x004A</td><td>ASCII code for "J"</td></tr>
+<tr><td>x4161</td><td>x0041</td><td>ASCII code for "A"</td></tr>
+<tr><td>x4162</td><td>x0043</td><td>ASCII code for "C"</td></tr>
+<tr><td>x4163</td><td>x004B</td><td>ASCII code for "K"</td></tr>
+<tr><td>x4164</td><td>x0000</td><td>NULL character which signifies end of name</td></tr>
+<tr><td>... </td><td>... </td><td>... </td></tr>
+<tr><td>x4200</td><td>x0000</td><td>Left Child (null)</td></tr>
+<tr><td>x4201</td><td>x0000</td><td>Right child (null)</td></tr>
+<tr><td>x4202</td><td>x0009</td><td>Student ID</td></tr>
+<tr><td>x4203</td><td>x4220</td><td>Pointer to first ASCII character of student's name</td></tr>
+<tr><td>... </td><td>... </td><td>...</td></tr>
+<tr><td>x4220</td><td>x004A</td><td>ASCII code for "J"</td></tr>
+<tr><td>x4221</td><td>x0045</td><td>ASCII code for "E"</td></tr>
+<tr><td>x4222</td><td>x004E</td><td>ASCII code for "N"</td></tr>
+<tr><td>x4223</td><td>x004E</td><td>ASCII code for "N"</td></tr>
+<tr><td>x4224</td><td>x0000</td><td>NULL character which signifies end of name</td></tr>
+<tr><td>... </td><td>... </td><td>...</td></tr>
+<tr><td>x4250</td><td>x0000</td><td>Left Child (null)</td></tr>
+<tr><td>x4251</td><td>x0000</td><td>Right child (null)</td></tr>
+<tr><td>x4252</td><td>x0004</td><td>Student ID</td></tr>
+<tr><td>x4253</td><td>x4300</td><td>Pointer to first ASCII character of student's name</td></tr>
+<tr><td>... </td><td>... </td><td>... </td></tr>
+<tr><td>x4300</td><td>x0041</td><td>ASCII code for "A"</td></tr>
+<tr><td>x4301</td><td>x004E</td><td>ASCII code for "N"</td></tr>
+<tr><td>x4302</td><td>x004E</td><td>ASCII code for "N"</td></tr>
+<tr><td>x4303</td><td>x0000</td><td>NULL character which signifies end of name</td></tr>
+</table>
+</td>
+<td align = center valign=top>
+   <img src = figures/tree_new.png width = 70%><br><br>
+	Figure 2. Binary tree stored in the memory shown on the left
+</td>
+</tr>
+</table>
+<br><br>
+
+<p>
+To search the binary search tree, your program will visit the first node (the root) of the tree and compare the student ID at that node with the ID entered by the user. If the IDs match, then we have found the right student, so your program should print the student’s name, followed by a line feed (ASCII code x0A), and prompt the user for another student ID. If a match is not found, it will visit the appropriate child of the node (depending on whether the entered ID is less than or greater than the node’s ID) and compare the entered ID against the ID at the child node. It will continue to visit nodes until either a match is found or it reaches a node with no appropriate child (e.g., if the entered value is less than the node’s value, but the node does not have a left child, or if the entered value is greater than the node’s value, but the node does not have a right child). This implies that a match was not found.
+</p>
+<p>
+<b> Input/Output Requirements </b><br><br>
+Described below are detailed requirements about the Inputs and Outputs of your program. You should adhere to these guidelines to receive full credit for this assignment.  <br>
+</p>
+<b>Input:</b><br><br>
+<p>
+Your program should prompt the user for the student ID from the keyboard, as follows:
+<ul>
+	<li> Print a string "Type a student ID and press Enter:". Note that you will get a 0 on the assignment if you do not print the string EXACTLY. The prompt should always begin on a new line on the console.</li>
+	<li> The user will input a character from the keyboard, followed by the &ltEnter&gt key. The character is either a decimal digit representing a student ID, or the letter ‘d’, signifying that the user has no more students to look up. You need to print both the character and the line feed character from the &ltEnter&gt key back to the console. </li>
+	<li> You may assume that only decimal digits or ‘d’ will be entered.</li>
+	<li> You may assume that the student ID is typed correctly without using backspace and delete, and is always followed by the &ltEnter&gt key. Similarily, you can assume 'd' will always be followed by the &ltEnter&gt key.</li>
+</ul>
+
+<b> Hint:</b>
+You can use the TRAP x20 (assembler name GETC) service routine to read a character from the user. If you follow TRAP x20 with the instruction TRAP x21 (assembler name OUT), then the character the user typed (either the decimal digit representing student ID, the letter 'd', or the newline character from the &ltEnter&gt key) will be displayed on the screen. To read BOTH the student ID (or the letter 'd') AND the &ltEnter&gt key from the keyboard, you'll need to use TRAP x20 twice (and follow each TRAP x20 with a TRAP x21), as each TRAP x20 instruction can only read a SINGLE character at a time.  
+<br><br>
+
+<b> Hint: </b> 
+You need to find a way to convert the decimal digit received from the keyboard from its ASCII value (e.g.  x32 for ‘2’) to its numeric value (e.g. x0002).  
+<br><br>
+</p>
+
+<b>Output:</b><br><br>
+<p>
+For each student the user looks up, your program should output one of two strings depending on the outcome of the directory lookup.
+
+<ul>
+	<li> When the student ID entered by the user is found in the binary search tree, output to the screen the name as recorded in the directory, followed by a line feed character (ASCII code x0A).	</li>
+	<li> When the student ID entered by the user is not found in the binary search tree, output to the screen: "No Entry", followed by a line feed character (ASCII code x0A).</li>
+</ul>
+<b>Hint:</b> 
+To output a string to the console display, use TRAP x22 (assembler name PUTS). What needs to go into R0 in order to use this TRAP instruction?    
+<br><br>
+
+When the user has no more students to look up and enters 'd' as the student ID, you should halt the machine.
+<ul>
+	<li> When program halts, the TRAP x25 service routine will print a line feed character to the console, followed by the message "----- Halting the processor -----". You should NOT be printing your own <br>
+"----- Halting the processor -----" message with TRAP x22 (PUTS); otherwise, you will get two copies of the message.</li>
+</ul>
+Shown below is a sample of what output your program will produce when the user looks up students on the example directory provided. <font color=red>You should verify that your program matches this output exactly. Pay special attention to the capitalization of letters.</font>
+<pre>
+
+Type a student ID and press Enter:5
+No Entry
+Type a student ID and press Enter:1
+No Entry
+Type a student ID and press Enter:0
+JACK
+Type a student ID and press Enter:4
+ANN
+Type a student ID and press Enter:8
+No Entry
+Type a student ID and press Enter:9
+JENN
+Type a student ID and press Enter:6
+BEN
+Type a student ID and press Enter:7
+No Entry
+Type a student ID and press Enter:d
+
+----- Halting the processor ----- 
+</pre>
+</p>
+<b>Notes:</b>
+<ol>
+<li> Your program must start at location x3000.</li>
+<li> The binary search tree representing the directory is an input to your program. The directory is loaded in memory before your program begins to run. When we grade your program, we will first load our own directory into memory and set memory location x3300 to the address of the root node of our directory, then run your program. When you are testing your own program, you should load your own directory into memory and set x3300 to the address of the root node of your directory before running your program.</li>
+<li> Your program will only search the directory, not modify it. You will lose points if you modify the directory.</li>
+<li> The pointer to the first node (the root) is stored in memory location x3300 before program execution begins. Furthermore, assume that all the nodes are stored between memory locations x4000 and xFDFF. Make no other assumptions about the location of the nodes. Note that the pointer to the first node may be set to NULL (i.e., 0), indicating that there are no nodes in the binary search tree. In this case, all student lookups should result in "No Entry", and you should halt the machine after the user enters 'd', as you would normally.</li>
+<li> Your program should NOT make any assumptions about the number of nodes in the binary search tree.</li>
+<li> You may assume that there are no cycles in the binary search tree, and each node has exactly one parent, and at most two children</li>
+<li> You may assume that everyone in the directory does have a name made up of valid ASCII characters.</li>
+<li> The &ltEnter&gt key is the line feed character which is the ASCII code x0A.</li>
+<li> You may assume that the directory never contains two nodes with the same student ID.</li>
+</ol>
+
+     <b>Submit your Program:</b>. Read the <a href=http://maater.github.io/ee306-f14/Software/submission.html>Submission Instructions</a> and follow the <a
+         href=http://maater.github.io/ee306-f14/Software/submission.html#updating_submission_dir>Updating Your
+         Submission Directory</a> instructions to obtain a "project3" directory for your programming assignment 3.  The
+     program you submit is the <b>directory.asm</b> file. Open directory.asm and write your
+     program in this file.  When you feel you are ready to submit your assignment, follow the <a
+         href=http://maater.github.io/ee306-f14/Software/submission.html#submitting_prg>Submitting
+         Your Program</a> instructions to upload your directory.asm file for grading.
+
+</body></html>
