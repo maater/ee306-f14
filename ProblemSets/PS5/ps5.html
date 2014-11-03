@@ -1,7 +1,7 @@
 <html><head>
 <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 
-<style> 
+<style>
     body {background-color: white; color: black}
     h1, h2, h3 {text-align: center}
     p, li {orphans: 3; widows: 3}
@@ -12,8 +12,8 @@
     code {font-family: monospace}
     ol {list-style-type: decimal; margin-top: .5em; margin-bottom: .5em}
     ol ol {list-style-type: lower-alpha}
-  </style> 
-  
+  </style>
+
     <title>EE 306 - Problem Set 5</title>
   </head><body bgcolor="white">
     <center>
@@ -21,13 +21,11 @@
       <h3>The University of Texas at Austin</h3>
 
     </center>
-    EE 306, Fall 2013<br>
+    EE 306, Fall 2014<br>
     Problem Set 5<br>
-    Due: 11 November, before class<br>
-    Yale N. Patt, Instructor<br>
-	 TAs: Ben Lin, Mochamad Asri, Ameya Chaudhari, Nikhil Garg, Lauren Guckert<br>
-   	   Jack Koenig, Saijel Mokashi, Sruti Nuthalapati, Sparsh Singhai, Jiajun Wang<br>
-
+    Due: November 10th, before class<br>
+    Aater Suleman, Instructor<br>
+    TAs: Owais Khan, Cagri Eryilmaz and Chirag Sakhuja <br>
 
 	<p>
       Instructions:
@@ -37,35 +35,13 @@
       your names on the solution sheet.  Also, remember to put the name
       of the TA and the time for the discussion section you would like the problem
       set turned back to you. Show your work. <br>
-		<b>Please staple your Problem Sets BEFORE coming to class!</b><br>
     </p>
- 
+
 <br>
 <ol>
 
-<li><!-- Begin Question --> <font color =red> Moved from problem set 4 </font>
-<ol type="a">
-<li>
-<p>Bob Computer just bought a fancy new graphics display
-for his <abbr title="Little Computer 3">LC-3</abbr>. In order to test out how fast it is, he rewrote the <code>OUT</code> trap
-handler so it would not check the <code>DSR</code> before outputting. Sadly he discovered
-that his display was not fast enough to keep up with the speed at which the LC-3
-was writing to the <code>DDR</code>. How was he able to tell?</p>
 
-</li><li>
-<p>Bob also rewrote the handler for <code>GETC</code>, but when he typed
-<code>ABCD</code> into the keyboard, the following values were input:</p>
-<pre><code>
-AAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDD
-</code></pre>
-<p>What did Bob do wrong?</p>
-</li>
-
-</ol>
-
-</li> <!-- End of Question --><br>
-
-<li><!-- Begin Question --> <font color =red> Now moved to problem set 6 (Updated 11/06/2013) </font>
+<li><!-- Begin Question -->
  (Adapted from 6.16) Shown below are the partial contents of memory locations x3000 to x3006.<br><br>
 
 <table border="1" align="center" bordercolor="#000000" style="background-color:#FFFFFF" width="600" cellpadding="3" cellspacing="1">
@@ -75,16 +51,16 @@ AAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBCCCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDD
 		<td>15</td>
 		<td></td>
 		<td></td>
-		<td></td>		
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
 
-		<td></td>		
 		<td></td>
 		<td></td>
 		<td></td>
-		<td></td>		
+		<td></td>
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
@@ -274,51 +250,10 @@ As the program executes, we keep track of all values loaded into the MAR. Such a
 
 </center>
 Your job: Fill in the missing bits in memory locations x3000 to x3006.
-
-
 </li> <!-- End of Question --><br><br>
-<li><!-- Begin Question -->
-<font color =red> Moved to problem set 6 (Updated 11/06/2013) </font>
-<p>
-Jane Computer (Bob's adoring wife), not to be outdone
-by her husband, decided to rewrite the <code>TRAP x22</code> handler at a different place in
-memory. Consider her implementation below. If a user writes a program that uses this
-
-
-<code>TRAP</code> handler to output an array of characters, how many times is the <code>ADD</code>
-
-instruction at the location with label <code>A</code> executed? Assume that the
-user only calls this "new" <code>TRAP x22</code> once. What is wrong with this <code>TRAP</code> handler?
-Now add the necessary instructions so the <code>TRAP</code> handler executes properly.</p>
-
-<p>Hint: <code>RET</code> uses <code>R7</code> as linkage back to the caller
-(<code>RET</code> is equivalent to <code>JMP R7</code>).</p>
-
-<pre><code>
-; TRAP handler
-; Outputs ASCII characters stored in consecutive memory locations.
-; R0 points to the first ASCII character before the new TRAP x22 is called.
-; The null character (x00) provides a sentinel that terminates the output sequence.
-
-        .ORIG x020F
-START   LDR R1, R0, #0
-        BRz DONE
-        ST R0, SAVER0
-        ADD R0, R1, #0
-        TRAP x21
-        LD R0, SAVER0
-A       ADD R0, R0, #1
-        BRnzp START
-DONE    RET
- 
-SAVER0  .BLKW #1
-        .END
-</code></pre>
-</li><!-- End of Question --><br/>
 
 <li><!-- Begin Question -->
-<font color =red> Moved to problem set 6 (Updated 11/06/2013) </font>
-(Adapted from 9.2) 
+(Adapted from 9.2)
 <ol type="a">
 
 <li><p>How many <code>TRAP</code> service routines can be implemented in the LC-3? Why?</p></li>
@@ -334,22 +269,22 @@ a <code>BRnzp</code> (unconditional <code>BR</code>) instruction work instead?</
 <li><!-- Begin Question -->
 <p>Assume that you have the following table in your program:</p>
 <pre><code>
-MASKS   .FILL x0001
-        .FILL x0002
-        .FILL x0004
-        .FILL x0008
-        .FILL x0010
-        .FILL x0020
-        .FILL x0040
-        .FILL x0080
-        .FILL x0100
-        .FILL x0200
-        .FILL x0400
-        .FILL x0800
-        .FILL x1000
-        .FILL x2000
-        .FILL x4000
-        .FILL x8000
+MASKS	.FILL x0001
+	.FILL x0002
+	.FILL x0004
+	.FILL x0008
+	.FILL x0010
+	.FILL x0020
+	.FILL x0040
+	.FILL x0080
+	.FILL x0100
+	.FILL x0200
+	.FILL x0400
+	.FILL x0800
+	.FILL x1000
+	.FILL x2000
+	.FILL x4000
+	.FILL x8000
 </code></pre>
 <ol type="a">
 <li>
@@ -400,14 +335,14 @@ CNT	.FILL x6000
 print the number 5 on the screen. It does not work. Why? Answer in no
 more than ten words, please.
 <pre><code>
-	.ORIG 	x3000
+	.ORIG	x3000
 	JSR	A
 	OUT			;TRAP  x21
 	BRnzp	DONE
-A 	AND	R0,R0,#0
+A	AND	R0,R0,#0
 	ADD	R0,R0,#5
 	JSR	B
-	RET	
+	RET
 DONE	HALT
 ASCII	.FILL	x0030
 B	LD	R1,ASCII
@@ -418,61 +353,24 @@ B	LD	R1,ASCII
 </li><!-- End of Question --><br/>
 
 <li><!-- Begin Question -->
-<font color =red> Moved to problem set 6 (Updated 11/06/2013) </font>
-(Adapted from 8.15)<br>
-<ol type="a">
-    <li>What does the following LC-3 program do?
-<pre><code>
-        .ORIG  x3000
-        LD R3 , A
-        STI R3, KBSR
-AGAIN   LD R0,B
-        TRAP X21
-        BRnzp AGAIN
-A       .FILL X4000
-B       .FILL X0032
-KBSR    .FILL XFE00
-        .END
-</code></pre>
-    </li>
-    <li> If someone strikes a key, the program will be interrupted and the
-keyboard interrupt service routine will be executed as shown below.
-What does the keyboard interrupt service routine do?
-<pre><code>
-        .ORIG X1000
-        LDI R0,KBDR
-        TRAP X21
-        TRAP X21
-        RTI
-KBDR    .FILL XFE02
-        .END
-</code></pre>
-</li>
-<li>
-Finally, suppose the program of part a started executing, and someone sitting at the keyboard struck a key. What would you see on the screen?
-</li>
-</ol>
-</li><!-- End of Question --><br/>
-
-<li><!-- Begin Question -->
 (Adapted from 8.16)<br>
 What does the following LC-3 program do?
 <pre><code>
-        .ORIG X3000
-        LD R0,ASCII
-        LD R1,NEG
-AGAIN   LDI R2,DSR
-        BRzp AGAIN
-        STI R0,DDR
-        ADD R0,R0,#1
-        ADD R2,R0,R1
-        BRnp AGAIN
-        HALT
-ASCII   .FILL X0041
-NEG     .FILL XFFB6
-DSR     .FILL XFE04
-DDR     .FILL XFE06
-        .END
+	.ORIG X3000
+	LD R0,ASCII
+	LD R1,NEG
+AGAIN	LDI R2,DSR
+	BRzp AGAIN
+	STI R0,DDR
+	ADD R0,R0,#1
+	ADD R2,R0,R1
+	BRnp AGAIN
+	HALT
+ASCII	.FILL X0041
+NEG	.FILL XFFB6
+DSR	.FILL XFE04
+DDR	.FILL XFE06
+	.END
 </code></pre>
 </li><!-- End of Question --><br/>
 
@@ -481,14 +379,14 @@ DDR     .FILL XFE06
 The following LC-3 program is assembled and then executed. There are no assemble time or run-time errors. What is the output of this program?
 Assume all registers are initialized to 0 before the program executes.
 <pre><code>
-        .ORIG X3000
-        ST R0, X3007
-        LEA R0, LABEL
-        TRAP X22
-        TRAP x25
-LABEL   .STRINGZ "FUNKY"
-LABEL2  .STRINGZ "HELLO WORLD"
-        .END
+	.ORIG X3000
+	ST R0, X3007
+	LEA R0, LABEL
+	TRAP X22
+	TRAP x25
+LABEL	.STRINGZ "FUNKY"
+LABEL2	.STRINGZ "HELLO WORLD"
+	.END
 </code></pre>
 </li><!-- End of Question --><br/>
 
@@ -501,40 +399,40 @@ in the given order. The first node is stored in locations x4000 ~ x4002. The ASC
 Write down the student's name and score in the order that it appears in the list.
 
 <pre><code>
-    Address         Contents
-    x4000           x4016
-    x4001           x4003
-    x4002           x4008
-    x4003           x004D
-    x4004           x0061
-    x4005           x0072
-    x4006           x0063
-    x4007           x0000
-    x4008           x0039
-    x4009           x0030
-    x400A           x0000
-    x400B           x0000
-    x400C           x4019
-    x400D           x401E
-    x400E           x004A
-    x400F           x0061
-    x4010           x0063
-    x4011           x006B
-    x4012           x0000
-    x4013           x0031
-    x4014           x0038
-    x4015           x0000
-    x4016           x400B
-    x4017           x400E
-    X4018           x4013
-    x4019           x004D
-    x401A           x0069
-    x401B           x006B
-    x401C           x0065
-    x401D           x0000
-    x401E           x0037
-    x401F           x0036
-    x4020           x0000
+    Address	    Contents
+    x4000	    x4016
+    x4001	    x4003
+    x4002	    x4008
+    x4003	    x004D
+    x4004	    x0061
+    x4005	    x0072
+    x4006	    x0063
+    x4007	    x0000
+    x4008	    x0039
+    x4009	    x0030
+    x400A	    x0000
+    x400B	    x0000
+    x400C	    x4019
+    x400D	    x401E
+    x400E	    x004A
+    x400F	    x0061
+    x4010	    x0063
+    x4011	    x006B
+    x4012	    x0000
+    x4013	    x0031
+    x4014	    x0038
+    x4015	    x0000
+    x4016	    x400B
+    x4017	    x400E
+    X4018	    x4013
+    x4019	    x004D
+    x401A	    x0069
+    x401B	    x006B
+    x401C	    x0065
+    x401D	    x0000
+    x401E	    x0037
+    x401F	    x0036
+    x4020	    x0000
 </code></pre>
 </li><!-- End of Question --><br/>
 
@@ -543,29 +441,29 @@ Write down the student's name and score in the order that it appears in the list
 	<ol type=a>
 	  <li>The program below counts the number of zeros in a 16-bit word.  Fill in the missing blanks below to make it work.<br>
 	    <pre>
-            .ORIG x3000
-            AND   R0, R0, #0
-            LD    R1, SIXTEEN
-            LD    R2, WORD
-A           BRn   B
-            ________________		
-B           ________________
-            BRz   C
-            ________________	
-            BR    A	; note: BR = BRnzp
-C           ST    R0, RESULT
-            HALT
+	    .ORIG x3000
+	    AND   R0, R0, #0
+	    LD	  R1, SIXTEEN
+	    LD	  R2, WORD
+A	    BRn   B
+	    ________________
+B	    ________________
+	    BRz   C
+	    ________________
+	    BR	  A	; note: BR = BRnzp
+C	    ST	  R0, RESULT
+	    HALT
 
 SIXTEEN     .FILL #16
-WORD        .BLKW #1
-RESULT      .BLKW #1
-            .END</pre></li>
-	  <li>After you have the correct answer above, what one instruction can you change (without adding any instructions) 
+WORD	    .BLKW #1
+RESULT	    .BLKW #1
+	    .END</pre></li>
+	  <li>After you have the correct answer above, what one instruction can you change (without adding any instructions)
 	    that will make the program count the number of ones instead?</li>
 	</ol>
 </li> <!--	End of Question --> <br/>
-	
-<li><!-- Begin Question --> <font color =red> Added on 11/05/2013</font>
+
+<li><!-- Begin Question --> 
 
 Suppose we use the unused opcode 1101 to specify a new instruction. We will require 3 states after decode (state 32) to complete the job. The control signals required to carry out the work of the new instruction are shown below. All control signals not shown below are 0.
 <center>
