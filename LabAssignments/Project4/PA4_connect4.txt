@@ -1,0 +1,70 @@
+The Game of Connect 4
+Connect 4, or 4 in a Line, is a simple board game played for centuries around the world. Legend has it that Captain Cook would disappear to his quarters for extended periods of time to play the game. When the crew discovered his preoccupation, they nicknamed the game "The Captain’s Mistress"! 
+Connect-4 is a two-person game. The game involves the two players alternating turns. It consists of a grid with columns and rows as shown in Figure below. At his/her turn, a player drops a checker into the column of his/her choice. The game play continues until one of the players gets 4 checkers in a line. The line can be horizontal, vertical, or diagonal. 
+This assignment requires you to implement a Connect-4 game in LC-3. The game will interact with the two players via the console and the keyboard. 
+
+1. Rules 
+In our variation of Connect 4, the game board consists of a 6 by 6 grid. 
+
+The rules are as follows: 
+
+Each player takes turns dropping a checker into a column. 
+	-A player cannot remove checkers from a column. 
+	-A player cannot insert a checker into a column that is full (that is, a column where every row is occupied by a checker). 
+	-The game ends when a player places four of one's own checkers next to each other vertically, horizontally, or diagonally. 
+	-A tie occurs if every location on the grid is occupied but no player has four consecutive checkers. 
+
+
+
+2. What to do 
+At the beginning of the game you should display the initial state of the game board. You should use the ASCII character "-" (ASCII code x002D) to represent an empty location in the grid, "O" (ASCII code x004F) to represent a checker of Player 1, and "X" (ASCII code x0058) to represent a checker of Player 2. To make your grid easier to read, output a space BETWEEN each column. Do not output a space after the 6th column. The initial state of the game board should look as follows: 
+
+	- - - - - -
+	- - - - - -
+	- - - - - -
+	- - - - - -
+	- - - - - -
+	- - - - - -
+
+Player 1 always goes first, and play alternates between Player 1 and Player 2. At the beginning of each turn you should output which player's turn it is, and prompt the player for her move. For Player 1 this should look as follows: 
+
+    Player 1, choose a column: 
+
+To specify which column to drop a checker into, the player should input a number followed by pressing ENTER. The number (from 1 to 6) specifies which column is selected, from left to right. For example, if the player wants to drop a checker into the 2nd column from the left, they would type 2 and then press enter. Your program must make sure the player's input referred to a valid column. If the player's move is invalid, you should output an error message and prompt the same player for a move. For example, if it is Player 1's turn:
+
+    Player 1, choose a column: D 
+    Invalid move. Try again. 
+    Player 1, choose a column: 7 
+    Invalid move. Try again. 
+    Player 1, choose a column: 
+
+Your program should keep prompting the player until a valid move is chosen. Be sure your program echoes the player's move to the screen as they type it. After you have echoed the player's move, you should output a newline character (ASCII code x000A) to move the cursor to the next line.
+
+After a player has chosen a valid move, you should update the state of the game board to reflect the move, re-display the updated game board, and check for a winner. If there is no winner, you should continue with the next player's turn.
+
+When a player has won or a tie has occurred, the game is over. At this point, your program should show the final board and then halt. For example, if Player 2 has four adjacent checkers, your program should output the following:
+
+    Player 2 Wins.
+
+If a tie occurs, your program should output the following:
+
+    Tie Game. 
+
+3. Sample Input/Output 
+An example of the input/output for a game being played can be found here. To receive full credit for your program, your input/output format MUST EXACTLY MATCH the format in the example. 
+
+4. Hints and Suggestions 
+One implementation is to allocate 36 locations in memory to represent each location on the grid. To make traversal of the grid easiest, you could store 0 if the location is empty, 1 if the location is occupied by Player 1, and -1 if the location is occupied by Player 2. The goal is to make maximal use of condition codes.
+
+Remember, all input and output functions use ASCII characters. You are responsible for making any conversions that are necessary.
+
+For character input from the keyboard in this assignment, you should use TRAP x20 (GETC). To echo the characters onto the screen, you should follow each TRAP x20 with a TRAP x21 (OUT).
+
+You should use subroutines where appropriate.
+
+In each subroutine you write, you should save and restore any registers that you use. This will avoid a major headache during debugging. 
+
+Notes: 
+	-The first line of your program must specify the memory address of the first instruction of your program. The LC-3 simulator will place your program starting at that address. For this assignment, you should place your program starting at x3000 (i.e. the first line of your program should be .ORIG x3000). 
+	-The file that you will submit for this assignment must be named connect4.asm 
+	-Follow the submission instructions for uploading your file for grading. 

@@ -1,0 +1,65 @@
+
+The Game of Nim
+
+Nim is a simple two-player game that probably originated in China (although the name is thought be German, from nimm the German word for "take"). There are many variations of this game with respect to the type of counters used (stones, matches, apples, etc.), the number of counters in each row, and the number of rows in the game board.
+
+
+1. Rules
+
+In our variation of Nim, the game board consists of three rows of rocks. Row A contains 3 rocks, Row B contains 5 rocks, and Row C contains 8 rocks.
+
+The rules are as follows:
+	-Each player takes turns removing one or more rocks from a single row.
+	-A player cannot remove rocks from more than one row in a single turn
+	-The game ends when a player removes the last rock from the game board. The player who removes the last rock loses.
+
+
+2. What to do 
+
+At the beginning of the game you should display the initial state of the game board. Before each row of rocks you should output the name of the row, for instance "Row A:". You should use the ASCII character lowercase "o" (ASCII code x006F) to represent a rock. The initial state of the game board should look as follows: 
+	
+	ROW A: ooo
+	ROW B: ooooo
+	ROW C: oooooooo
+	
+Player 1 always goes first, and play alternates between Player 1 and Player 2. At the beginning of each turn you should output which player's turn it is, and prompt the player for her move. For Player 1 this should look as follows: 
+
+	Player 1, choose a row and number of rocks: 
+	
+To specify which row and how many rocks to remove, the player should input a letter followed by a number (they do NOT need to press Enter after inputting a move). The letter (A, B, or C) specifies the row, and the number (from 1 to the number of rocks in the chosen row) specifies how many rocks to remove. Your program must make sure the player's move has a valid row and number of rocks. If the player's move is invalid, you should output an error message and prompt the same player for a move. For example, if it is Player 1's turn: 
+
+	Player 1, choose a row and number of rocks: D4
+	Invalid move. Try again.
+	Player 1, choose a row and number of rocks: A9
+	Invalid move. Try again.
+	Player 1, choose a row and number of rocks:A*
+	Invalid move. Try again.
+	Player 1, choose a row and number of rocks:&4
+	Invalid move. Try again.
+	Player 1, choose a row and number of rocks: 
+
+Your program should keep prompting the player until a valid move is chosen. Be sure your program echoes the player's move to the screen as they type it. After you have echoed the player's move, you should output a newline character (ASCII code x000A) to move the cursor to the next line. 
+
+After a player has chosen a valid move, you should update the state of the game board to reflect the move, re-display the updated game board, and check for a winner. If there is no winner, you should continue with the next player's turn. 
+
+When a player has removed the last rock from the game board, the game is over. At this point, your program should display the winner and then halt. For example, if Player 2 removes the last rock, your program should output the following: 
+
+	Player 1 Wins.
+
+	
+3. Sample Input/Output 
+
+An example of the input/output for a game being played can be found here. Note: we added additional moves to the example game on November 22. Please be sure to read the augumented version. To receive full credit for your program, your input/output format MUST EXACTLY MATCH the format in the example. 
+
+
+4. Hints and Suggestions 
+
+Remember, all input and output functions use ASCII characters. You are responsible for making any conversions that are necessary. 
+For character input from the keyboard in this assignment, you should use TRAP x20 (GETC). To echo the characters onto the screen, you should follow each TRAP x20 with a TRAP x21 (OUT). 
+You should use subroutines where appropriate. 
+In each subroutine you write, you should save and restore any registers that you use. This will avoid a major headache during debugging. 
+
+Notes: 
+	-The first line of your program must specify the memory address of the first instruction of your program. The LC-3 simulator will place your program starting at that address. For this assignment, you should place your program starting at x3000 (i.e. the first line of your program should be .ORIG x3000). 
+	-The file that you will submit for this assignment must be named nim.asm 
+	-Follow the submission instructions for uploading your file for grading. 

@@ -1,0 +1,433 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  
+  <style> 
+    body {background-color: white; color: black}
+    h1, h2, h3 {text-align: center}
+    p, li {orphans: 3; widows: 3}
+    .figure {margin-top: 1em; margin-right: auto; margin-bottom: 1em; margin-left: auto; text-align: center}
+    table {border-collapse: collapse; empty-cells: show; page-break-inside: avoid}
+    td {border: 1px solid black; padding: 0.5em}
+    th {border: 1px solid black; padding: 0.5em; font-weight: bold}
+    code {font-family: monospace}
+    ol {list-style-type: decimal; margin-top: .5em; margin-bottom: .5em}
+    ol ol {list-style-type: lower-alpha}
+  </style>
+	
+  
+    <title>EE 306 - Problem Set 4</title>
+  </head><body bgcolor="white">
+    <center>
+      <h2>Department of Electrical and Computer Engineering</h2>
+      <h3>The University of Texas at Austin</h3>
+
+    </center>
+    EE 306, Fall 2014<br>
+    Problem Set 4<br>
+    Due: October 27th, before class<br>
+    Aater Suleman, Instructor<br>
+TAs: Owais Khan, Cagri Eryilmaz and Chirag Sakhuja<br>
+
+	<p>
+      Instructions:
+      <br>
+      You are encouraged to work on the problem set in groups and turn
+      in one problem set for the entire group. Remember to put all
+      your names on the solution sheet. Also, remember to put the name
+      of the TA and the time for the discussion section you would like
+      the problem set turned back to you. Show your work. <br>
+      <br>
+      
+    </p>
+    
+
+<p>
+<ol>
+
+
+<li><!-- Begin Question -->
+<p>(Adapted from 5.31)<br/>
+The following diagram shows a snapshot of the 8 registers of the LC-3 before
+and after the instruction at location x1000 is executed. Fill in the bits of
+the instruction at location x1000.
+<table class="figure"> 
+<tr><th>Register</th><th>Before</th><th>After</th></tr>
+
+<tr><td><code>R0</code></td><td><code>	x0000</code></td><td><code> x0000</code></td></tr>
+<tr><td><code>R1</code></td><td><code>	x1111</code></td><td><code> x1111</code></td></tr>
+<tr><td><code>R2</code></td><td><code>	x2222</code></td><td><code> x2222</code></td></tr>
+<tr><td><code>R3</code></td><td><code>	x3333</code></td><td><code> x3333</code></td></tr>
+<tr><td><code>R4</code></td><td><code>	x4444</code></td><td><code> x4444</code></td></tr>
+<tr><td><code>R5</code></td><td><code>	x5555</code></td><td><code> xFFF8</code></td></tr>
+<tr><td><code>R6</code></td><td><code>	x6666</code></td><td><code> x6666</code></td></tr>
+<tr><td><code>R7</code></td><td><code>	x7777</code></td><td><code> x7777</code></td></tr>
+</table>
+<table class="figure"> 
+<tr><th>Memory Location</th><th>Value</th></tr>
+
+<tr><td><code>x1000</code></td><td><code>	0001 <b>101 000 1 11000</b> </code></td></tr>
+</table>
+</p>
+</li><!-- End of Question --><br/>
+
+
+<li><!-- Begin Question -->
+The memory locations x3000 to x3007 contain the values as shown in the
+table below. Assume the memory contents below are loaded into the
+simulator and the PC has been set to point to location x3000. Assume
+that a break point has been placed to the left of the HALT instruction
+(ie at location x3006
+which contains 1111 0000 0010 0101). Assume that before the program is
+run, each of the 8 registers has the value x0000 and the NZP bits are
+010. <br>
+<table class="figure"> 
+<tbody><tr><th>Memory Location</th><th>Value</th></tr>
+
+<tr><td><code>X3000</code></td><td><code>	0101000000100000</code></td></tr>
+<tr><td><code>X3001</code></td><td><code>	0001000000100101</code></td></tr>
+<tr><td><code>X3002</code></td><td><code>	0010001000000100</code></td></tr>
+<tr><td><code>X3003</code></td><td><code>	0001000000000000</code></td></tr>
+<tr><td><code>X3004</code></td><td><code>	0001001001111111</code></td></tr>
+<tr><td><code>X3005</code></td><td><code>	0000001111111101</code></td></tr>
+<tr><td><code>X3006</code></td><td><code>	1111000000100101</code></td></tr>
+<tr><td><code>X3007</code></td><td><code>	0000000000000100</code></td></tr>
+</tbody></table>
+
+<ol>
+<li>In no more than 15 words, summarize what this program will do when
+the &#8220;Run&#8221; button is pushed in the simulator. Hint: What relationship is
+there between the value loaded from memory and the final value in R0
+after the program has completed?</li>
+<dd><b>5 is put in R0 and shifted left the value at location x3007 times</dd></b>
+<li>What are the contents of the PC, the 8 general purpose registers
+(R0-R7), and the N, Z, and P condition code registers after the program
+completes?</li>
+<table class="figure"> 
+<tr><td>PC</td><td>x3006</td></tr>
+<tr><td>R0</td><td>x0050</td></tr>
+<tr><td>R1</td><td>x0000</td></tr>
+<tr><td>R2</td><td>x0000</td></tr>
+<tr><td>R3</td><td>x0000</td></tr>
+<tr><td>R4</td><td>x0000</td></tr>
+<tr><td>R5</td><td>x0000</td></tr>
+<tr><td>R6</td><td>x0000</td></tr>
+<tr><td>R7</td><td>x0000</td></tr>
+<tr><td>N</td><td>0</td></tr>
+<tr><td>Z</td><td>1</td></tr>
+<tr><td>P</td><td>0</td></tr>
+</tbody></table>
+<li>What is the total number of CPU clock cycles that this program will
+take to execute until it reaches the breakpoint? Note: You should refer
+to the state machine (pg 568) to determine how many cycles an
+instruction takes. Assume each state that access memory takes 5 cycles
+to complete and every other state takes 1 cycle to execute.</li>
+</ol>
+
+<table class="figure"> 
+<tbody><tr><th>Memory Location</th><th>Value</th><th>Instruction</th><th>Cycles takes to exectue once</th><th>number of times executed</th><th>Total Cycles for instruction</th></tr>
+
+<tr><td><code>X3000</code></td><td><code>	0101000000100000</code></td><td>AND</td><td>9</td><td>1</td><td>9</td></tr>
+<tr><td><code>X3001</code></td><td><code>	0001000000100101</code></td><td>ADD</td><td>9</td><td>1</td><td>9</td></tr>
+<tr><td><code>X3002</code></td><td><code>	0010001000000100</code></td><td>LD</td><td>15</td><td>1</td><td>15</td></tr>
+<tr><td><code>X3003</code></td><td><code>	0001000000000000</code></td><td>ADD</td><td>9</td><td>4</td><td>36</td></tr>
+<tr><td><code>X3004</code></td><td><code>	0001001001111111</code></td><td>ADD</td><td>9</td><td>4</td><td>36</td></tr>
+<tr><td><code>X3005</code></td><td><code>	0000001111111101</code></td><td>Branch</td><td>9 if not taken 10 if taken</td><td>3 times taken 1 time not taken</td><td>39</td></tr>
+
+</tbody></table>
+
+<dd><b>Total Cycles  9+9+15+36+36+39 = 144 </dd></b>
+</li><!-- End of Question-->
+
+<li><!-- Begin Question -->
+<p>
+What does the following program do (in 15 words or fewer)? The PC is initially
+at x3000.
+<table class="figure"> 
+<tr><th>Memory Location</th><th>Value</th></tr>
+
+<tr><td><code>x3000</code></td><td><code>	0101 000 000 1 00000</code></td></tr>
+<tr><td><code>x3001</code></td><td><code>	0010 001 011111110</code></td></tr>
+<tr><td><code>x3002</code></td><td><code>	0000 010 000000100</code></td></tr>
+<tr><td><code>x3003</code></td><td><code>	0000 011 000000001</code></td></tr>
+<tr><td><code>x3004</code></td><td><code>	0001 000 000 1 00001</code></td></tr>
+<tr><td><code>x3005</code></td><td><code>	0001 001 001 000 001</code></td></tr>
+<tr><td><code>x3006</code></td><td><code>	0000 111 111111011</code></td></tr>
+<tr><td><code>x3007</code></td><td><code>	1111 0000 0010 0101</code></td></tr>
+</table>
+<br>
+<b> Counts the number of bits that are set to 1 in the word at x3100 </b>
+</p>
+</li><!-- End of Question --><br/>
+
+<li><!-- Begin Question -->
+<p>
+Prior to executing the following program, memory locations x3100 through x4000
+are initialized to random values, exactly one of which is negative. The
+following program finds the address of the negative value, and stores that
+address into memory location x3050. Two instructions are missing. Fill in the
+missing instructions to complete the program. The PC is initially at x3000.
+<table class="figure"> 
+<tr><th>Memory Location</th><th>Value</th></tr>
+
+<tr><td><code>x3000</code></td><td><code>	1110 000 011111111</code></td></tr>
+<tr><td><code>x3001</code></td><td><code>	<b> 0110 001 000 000000 </b> </code></td></tr>
+<tr><td><code>x3002</code></td><td><code>	<b> 0000 100 000000010</code></td></tr>
+<tr><td><code>x3003</code></td><td><code>	0001 000 000 1 00001</code></td></tr>
+<tr><td><code>x3004</code></td><td><code>	0000 111 111111100</code></td></tr>
+<tr><td><code>x3005</code></td><td><code>	0011 000 001001010</code></td></tr>
+<tr><td><code>x3006</code></td><td><code>	1111 0000 0010 0101</code></td></tr>
+</table>
+</p>
+</li><!-- End of Question --><br/>
+
+
+<li><!-- Begin Question --><p>The LC-3 has just finished executing a large program. A careful
+examination of each clock cycle reveals that the number of executed
+store instructions (<code>ST</code>, <code>STR</code>, and <code>STI</code>) is greater than the number of executed load instructions (<code>LD</code>, <code>LDR</code>, and <code>LDI</code>). However, the number of memory write accesses is less than the number of memory read accesses, <em>excluding instruction fetches</em>. How can that be? Be sure to specify which instructions may account for the discrepancy.</p>
+
+
+<p><b>
+A large number of LDI instructions (two read accesses) and STI instructions (one read access and one write access) could account for this discrepancy.
+</p></b>
+
+</li> <!-- End of Question --><br><br>
+
+<li> <!-- Begin Question --> (7.2) An LC-3 assembly language program contains the instruction:
+
+
+<p>
+&nbsp ASCII &nbsp &nbsp &nbsp LD R1, ASCII
+</p>
+The symbol table entry for ASCII is x4F08. If this instruction is executed during the running of the program, what will be contained in R1 immediately after the instruction is executed?
+<b><p> R1 <-- M[ASCII]<br>
+R1 = 0010 001 1 1111 1111<br>
+&nbsp &nbsp &nbsp &nbsp &nbsp LD &nbsp R1, &nbsp &nbsp #-1
+</p></b>
+</li><!-- End of Question --><br><br>
+
+<li><!-- Begin Question --> (7.10) The following program fragment has an error in it. Identify the error and explain how to fix it.
+<p>
+<table>
+<tr><td>&nbsp </td><td>ADD R3, R3, #30</td><td><b>&nbsp &nbsp The immediate value is too large.</b></td></tr> 
+<tr><td>&nbsp </td><td>ST R3, A</td></tr>
+<tr><td>&nbsp </td><td>HALT</td></tr>
+<tr><td>A &nbsp </td><td>.BLKW 1</td></tr>
+</table>
+</p>
+Will this error be detected when this code is assembled or when this code is run on the LC-3?
+
+<b><p>
+The error will be detected by the assembler since it will not be able to form the 16 bits of the instruction which performs the addition.<br>
+One possible solution is to seperate the addition to two add instruction with immediate of #15.
+<table>
+<tr><td>&nbsp </td><td>ADD R3, R3, #15</td><td></tr> 
+<tr><td>&nbsp </td><td>ADD R3, R3, #15</td><td></tr>
+<tr><td>&nbsp </td><td>ST R3, A</td></tr>
+<tr><td>&nbsp </td><td>HALT</td></tr>
+<tr><td>A &nbsp </td><td>.BLKW 1</td></tr>
+</table>
+</p></b>
+</li><!-- End of Question --><br><br>
+
+<li><!-- Begin Question -->
+ (Adapted from 6.14) Consider the following machine language program:
+<p>
+<table>
+
+<tr><td>&nbsp </td><td>AND R2, R2, #0</td><td><b>&nbsp R2 <- 0</td></tr>
+<tr><td>LOOP &nbsp </td><td>ADD R1, R1, #-3</td><td><b>&nbsp R1 <- R1-3</td></tr>
+<tr><td>&nbsp </td><td>BRn END</td><td><b>&nbsp End when R1 is negative</td></tr>
+<tr><td>&nbsp </td><td>ADD R2, R2, #1</td><td><b>&nbsp R2 <- R2+1</td></tr>
+<tr><td>&nbsp </td><td>BRnzp LOOP</td></tr>
+<tr><td>END &nbsp </td><td>HALT</td></tr>
+</table>
+</p>
+What are the possible initial values of R1 that cause the final value in R2 to be 3?
+
+<p><b>For R2 to contain the value 3, the BRn must not have intiated a branch for 3 consecutive times. 
+Therefore, R1 wasn't negative after the instruction ADD R1, R1, #-3 was exectued 3 times and was negative after the instruction was executed 4 times.
+That is, R1-3x3 = R1-9 >= 0 and R1-3x4 = R1-12 < 0. Solving the inequalities yields, 9 <= R1 < 12. 
+Since a register contains integers, R1 could have been 9, 10, or 11.
+</p></b>
+</li><!-- End of Question --><br><br>
+
+<li><!-- Begin Question -->
+(Adapted from 7.16) Assume a sequence of nonnegative integers is stored in consecutive memory locations, one integer per memory location, starting at location x4000. Each integer has a value between 0 and 30,000 (decimal). The sequence terminates with the value -1 (i.e., xFFFF).
+<ol type="a">
+
+<li>Create the symbol table entries generated by the assembler when translating the following routine into machine code:
+<p>
+<table>
+<tr><td>&nbsp </td><td>.ORIG x3000</td></tr>
+<tr><td>&nbsp </td><td>AND R4, R4, #0</td></tr>
+<tr><td>&nbsp </td><td>AND R3, R3, #0</td></tr>
+<tr><td>&nbsp </td><td>LD R0, NUMBERS</td></tr>
+<tr><td>LOOP &nbsp </td><td>LDR R1, R0, #0</td></tr>
+<tr><td>&nbsp </td><td>NOT R2, R1</td></tr>
+<tr><td>&nbsp </td><td>BRz DONE</td></tr>
+<tr><td>&nbsp </td><td>AND R2, R1, #1</td></tr>
+<tr><td>&nbsp </td><td>BRz L1</td></tr>
+<tr><td>&nbsp </td><td>ADD R4, R4, #1</td></tr>
+<tr><td>&nbsp </td><td>BRnzp NEXT</td></tr>
+<tr><td>L1 &nbsp </td><td>ADD R3, R3, #1</td></tr>
+<tr><td>NEXT &nbsp </td><td>ADD R0, R0, #1</td></tr>
+<tr><td>&nbsp </td><td>BRnzp LOOP</td></tr>
+<tr><td>DONE &nbsp </td><td>TRAP x25</td></tr>
+<tr><td>NUMBERS &nbsp </td><td>.FILL x4000</td></tr>
+<tr><td>&nbsp </td><td>.END</td></tr>
+</table>
+</p>
+<u><h4>Symbol Table</h4></u>
+<table border="1">
+<tr><td><b>Label </td><td><b>Memory Address</td></tr>
+<tr><td>LOOP </td><td>x3003</td></tr>
+<tr><td>L1 </td><td>x300A</td></tr>
+<tr><td>NEXT </td><td>x300B</td></tr>
+<tr><td>DONE </td><td>x300D</td></tr>
+<tr><td>NUMBERS </td><td>x300E</td></tr>
+</table><br>
+</li>
+<li>What does the above program do?
+<p><b>
+The instruction AND R2, R1, #1 performs a bit mask (x0001) to decide whether the least significant bit of the value is 0 or 1.
+The LSB of a number is used to determine whether the integer was even or odd.
+For example, numbers with a zero LSB are: 0000 (#0), 0010 (#2), 0100 (#4), 0110 (#6), which are all even.
+Hence, R3 counts the amount of even numbers in the list and R4 counts the amount of odd numbers.
+</b></p>
+</li>
+</ol>
+</li><!-- End of Question --><br><br>
+
+
+<li><!-- Begin Question -->
+ Below is a segment of LC-3 machine language program.
+<p>
+<table cellspacing="1in">
+<tr><td>&nbsp </td><td>ADD R2, R1, #0</td></tr>
+
+<tr><td>HERE &nbsp </td><td>ADD R3, R2, #-1</td></tr>
+<tr><td></td><td>AND R3, R3, R2</td></tr>
+<tr><td></td><td>BRz END</td></tr>
+<tr><td></td><td>ADD R2, R2, #1</td></tr>
+<tr><td></td><td>BRnzp HERE</td></tr>
+<tr><td>END</td><td>HALT</td></tr>
+</table>
+
+</p>
+If the data in R1 is an unsigned integer larger than 1, what does the program do? (Hint: what is the relationship between the resulting integer in R2 and the original integer in R1?)
+<p><b>
+The program finds out the smallest power of 2 which is larger than or equal to the unsigned integer in R1.
+</p></b>
+</li> <!-- End of Question --><br><br>
+
+<li><!-- Begin Question -->
+ (Adapted from 7.18) The following LC-3 program compares two character strings of the same length. The source strings are in the .STRINGZ form. The first string starts at memory location x4000, and the second string starts at memory location x4100. If the strings are the same, the program terminates with the value 1 in R5; otherwise the program terminates with the value 0 in R5. Insert one instruction each at (a), (b), and (c) that will complete the program. Note: The memory location immediately following each string contains x0000.
+<p>
+<table>
+<tr><td></td><td>.ORIG x3000</td><td></td></tr>
+
+<tr><td></td><td>LD R1, FIRST</td><td></td></tr>
+<tr><td></td><td>LD R2, SECOND</td><td></td></tr>
+<tr><td></td><td>AND R0, R0, #0</td><td></td></tr>
+<tr><td>LOOP</td><td><u><b>LDR R3, R1, #0</td><td>; (a)</td></tr>
+<tr><td></td><td>LDR R4, R2, #0</td><td></td></tr>
+<tr><td></td><td>BRz NEXT</td><td></td></tr>
+<tr><td></td><td>ADD R1, R1, #1</td><td></td></tr>
+<tr><td></td><td>ADD R2, R2, #1</td><td></td></tr>
+<tr><td></td><td><u><b>NOT R4, R4</td><td>; (b)</td></tr>
+<tr><td></td><td><u><b>ADD R4, R4, #1</td><td>; (c)</td></tr>
+<tr><td></td><td>ADD R3, R3, R4</td><td></td></tr>
+<tr><td></td><td>BRz LOOP</td><td></td></tr>
+<tr><td></td><td>AND R5, R5, #0</td><td></td></tr>
+<tr><td></td><td>BRnzp DONE</td><td></td></tr>
+<tr><td>NEXT</td><td>AND R5, R5, #0</td><td></td></tr>
+<tr><td></td><td>ADD R5, R5, #1</td><td></td></tr>
+<tr><td>DONE</td><td>TRAP x25</td><td></td></tr>
+<tr><td>FIRST &nbsp </td><td>.FILL x4000</td><td></td></tr>
+<tr><td>SECOND &nbsp </td><td>.FILL x4100</td><td></td></tr>
+<tr><td></td><td>.END</td><td></td></tr>
+</table>
+</p>
+</li> <!-- End of Question --><br><br>
+
+
+<li><!-- Begin Question -->
+The data at memory address x3500 is a bit vector with each bit representing whether a certain power plant in the area is generating electricity (bit = 1) or not (bit = 0). <!--<del>The program counts the number of power plants that don't generate electricity and stores the result at x3501. However, the program contains a mistake which prevents it from correctly counting the number of operating power plants.</del>  <font color="red">-->The program counts the number of power plants that generate electricity and stores the result at x3501. However, the program contains a mistake which prevents it from correctly counting the number of electricity generating (operational) power plants.<!--</font>--> Identify it and explain how to fix it.
+
+<p>
+<table>
+<tr><td></td><td>.ORIG x3000</td></tr>
+<tr><td></td><td>AND R0, R0, #0</td></tr>
+<tr><td></td><td>LD R1, NUMBITS</td></tr>
+<tr><td></td><td>LDI R2, VECTOR</td></tr>
+<tr><td></td><td>ADD R3, R0, #1</td></tr>
+<tr><td>CHECK &nbsp </td><td>AND R4, R2, R3</td></tr>
+<tr><td></td><td>BRz NOTOPER</td></tr>
+<tr><td></td><td>ADD R0, R0, #1</td></tr>
+<tr><td>NOTOPER &nbsp</td><td>ADD R3, R3, R3</td></tr>
+<tr><td></td><td>ADD R1, R1, #-1</td></tr>
+<tr><td></td><td>BRp CHECK</td></tr>
+<tr><td></td><td><b>LD R2, VECTOR</td><td><b>&nbsp <- missing instruction</tr>
+<tr><td></td><td>STR R0, R2, #1</td></tr>
+<tr><td></td><td>TRAP x25</td></tr>
+<tr><td>NUMBITS &nbsp </td><td>.FILL #16</td></tr>
+<tr><td>VECTOR &nbsp </td><td>.FILL x3500</td></tr>
+<tr><td></td><td>.END</td></tr>
+</table>
+</p>
+<p><b>
+R2 contains the bit vector, and not the address at which the bit vector is contained. 
+The instruction LDI R2, VECTOR loaded the value at x3500 into R2 since the value at the memory address labeled as VECTOR was used as the address from which to load. 
+The store instruction STR R0, R2, #1 uses the value of R2 to evaluate an address. 
+However, R2 must be modified to contain an address for an STR instruction to work. 
+Thus, LD R2, VECTOR is an additional required instruction.
+</p></b>
+</li> <!-- End of Question --><br><br>
+
+ 
+<li><!-- Begin Question -->
+The following program does not do anything useful. However, being an "electronic idiot," the LC-3 will still execute it.
+<pre><code>
+        .ORIG x3000
+        LD R0, Addr1
+        LEA R1, Addr1
+        LDI R2, Addr1
+        LDR R3, R0, #-6
+        LDR R4, R1, #0
+        ADD R1, R1, #3
+        ST R2, #5
+        STR R1, R0, #3
+        STI R4, Addr4
+        HALT
+Addr1   .FILL x300B
+Addr2   .FILL x000A
+Addr3   .BLKW 1
+Addr4   .FILL x300D
+Addr5   .FILL x300C
+        .END
+
+</code></pre>
+<p>Without using the simulator, answer the following questions:</p>
+<ol type="a">
+
+<li><p>What will the values of registers <code>R0</code> through <code>R4</code> be after the LC-3 finishes executing the <code>ADD</code> instruction?</p></li>
+
+<p><b>
+R0 - x300B<br>R1 - x300D<br>R2 - x000A<br>R3 - x1263<br>R4 - x300B
+</p></b>
+
+<li><p>What will the values of memory locations <code>Addr1</code> through <code>Addr5</code> be after the LC-3 finishes executing the <code>HALT</code> instruction?</p></li>
+
+<p><b>
+Addr1 - x300B<br>Addr2 - x000A<br>Addr3 - x000A<br>Addr4 - x300B<br>Addr5 - x300D
+</p></b>
+
+</ol>
+
+
+
+
+</li> <!-- End of Question --><br><br>
+
+
+  </body></html>

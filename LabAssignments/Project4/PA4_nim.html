@@ -1,0 +1,122 @@
+<html>
+  <head>
+    <title>EE 306 - Programming Assignment 4 - Nim</title>
+  </head>
+  <body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+   
+<ol>   
+    <p><h3> The Game of Nim</h3>
+      <br>
+      Nim is a simple two-player game that probably originated in China (although the name is thought be German, from <i>nimm</i> the German word for "take").  
+      There are many variations of this game with respect to the type of counters used (stones, matches, apples, etc.), the number of counters in each row, 
+      and the number of rows in the game board.<br><br>
+
+    <li><p><b> Rules</b><br>
+      <br>
+      In our variation of Nim, the game board consists of three rows of rocks. Row A contains 3 rocks, Row B contains 5 rocks, and Row C contains 8 rocks.<br>
+      <br>
+      The rules are as follows:<br>
+    <ul>
+      <li>Each player takes turns removing one or more rocks from a single row.<br>
+      <li>A player cannot remove rocks from more than one row in a single turn<br>
+      <li>The game ends when a player removes the last rock from the game board. The player who removes the last rock loses.<br>
+    </ul>
+	</li><br><br>
+   <li><p><b> What to do</b> <br><br>
+    <ul>
+      <li>
+	At the beginning of the game you should display the initial state of the 
+	game board. Before each row of rocks you should output the name of the 
+	row, for instance "Row A:". You should use the ASCII character lowercase "o" (ASCII code x006F) 
+	to represent a rock. The initial state of the game board should look as follows: 
+<pre>ROW A: ooo
+ROW B: ooooo
+ROW C: oooooooo</pre>
+      </li>
+      <li>
+	Player 1 always goes first, and play alternates between Player 1 and Player 2.  
+	At the beginning of each turn you should output which player's turn it is, and 
+	prompt the player for her move. For Player 1 this should look as follows:
+<pre>Player 1, choose a row and number of rocks: </pre>
+      </li>
+      <li>
+	To specify which row and how many rocks to remove, the player should input a
+	letter followed by a number (they do NOT need to press Enter after inputting
+	a move). The letter (A, B, or C) specifies the row, and the number (from 1
+	to the number of rocks in the chosen row) specifies how many rocks to
+	remove. Your program must make sure the player's move has a valid row and
+	number of rocks. If the player's move is invalid, you should output an error
+	message and prompt the same player for a move. For example, if it is Player
+	1's turn:	
+<pre>Player 1, choose a row and number of rocks: D4
+Invalid move. Try again.
+Player 1, choose a row and number of rocks: A9
+Invalid move. Try again.
+Player 1, choose a row and number of rocks: A*
+Invalid move. Try again.
+Player 1, choose a row and number of rocks: &4
+Invalid move. Try again.
+
+Player 1, choose a row and number of rocks: </pre>
+	
+	Your program should keep prompting the player until a valid move is chosen.  Be sure your program echoes 
+	the player's move to the screen as they type it.  After you have echoed the player's move, you should output 
+	a newline character (ASCII code x000A) to move the cursor to the next line.
+      </li>
+    <br>
+    <li>
+	 After a player has chosen a valid move, you should check for a winner.
+	 If there is one, display the appropriate banner declaring the winner.
+	 If there is no winner, your program should update the state of the game
+	 board to reflect the move, re-display the updated game board, and continue with the 
+	 next player's turn.
+    </li>
+    <br>
+    <li>
+      When a player has removed the last rock from the game board, the game is over.  At this point, your program 
+      should display the winner and then halt. For example, if Player 2 removes the last rock, your program should 
+      output the following:
+<pre>Player 1 Wins.</pre>
+    </li>
+  </ul>
+  </li>
+    <li><p><b> Sample Input/Output</b> <br>
+      <br>
+		An example of the input/output for a game being played can be found <a
+			href="nim_example.txt">here</a>. <b>To receive full credit for your
+			program, your input/output format MUST EXACTLY MATCH the format in the
+			example.</b> 
+      <br>
+</li>	  <br>
+      
+    <li><p><b> Hints and Suggestions</b> <br><br>
+    <ul>
+      <li>
+	Remember, all input and output functions use ASCII characters. You are responsible for making any conversions that are necessary.
+      </li>
+      <li>
+	For character input from the keyboard in this assignment, you should use TRAP x20 (GETC). To echo the characters onto the screen, you should follow each TRAP x20 with a TRAP x21 (OUT).
+      </li>
+      <li>
+	You should use subroutines where appropriate.
+      </li>
+		<li>In each subroutine you write, you should save and restore any
+		registers that you use.  This will avoid a major headache during
+		debugging.</li>
+		<li><font color=red>A legitimate turn must contain the row, specified as
+			A, B, or C (i.e., capital letter) followed by a number that is not
+			larger than the number of rocks still remaining in that
+			row.</font></li>
+  </ul>
+  </li>
+</ol>
+Notes:
+<ul type=".">
+<li>The first line of your program must specify the memory address of the first instruction of your program. The LC-3 simulator will place your program starting at that address. For this assignment, you should place your program starting at x3000 (i.e. the first line of your program should be .ORIG x3000).</li>
+<br><li>The file that you will submit for this assignment must be named <b>nim.asm</b></li>
+<br><li>Follow the <a href="../../Software/submission.html">submission 
+instructions</a> for uploading your file for grading. Be sure to submit inside of the Project 4 directory and to verify your submission.</li>
+</ul>
+    
+  </body>
+</html>
