@@ -1,0 +1,179 @@
+<html>
+  <head>
+    <title>EE 306 Programming Assignment 5</title>
+  </head>
+  <body text="#000000" bgcolor="#FFFFFF" link="#0000EF" vlink="#51188E" alink="#FF0000">
+    
+    <center>
+      <h2>Department of Electrical and Computer Engineering</h2>
+      <h3>The University of Texas at Austin</h3>
+      
+    </center>
+    EE 306, Fall 2014<br>
+    Programming Assignment 5<br>
+	 Due: December 5, 5:00pm<br>
+    Aater Suleman, Instructor<br>
+    TAs: Owais Khan, Cagri Eryilmaz and Chirag Sakhuja<br>
+ 
+	You must do the programming assignment by yourself. You are
+	permitted to get help from ONLY the TAs and the instructor.<br><p>
+	  
+The purpose of this assignment is to show how interrupt-driven
+Input/Output can interrupt a program that is running, execute the
+interrupt service routine, and return to the interrupted program,
+picking up exactly where it left off (just as if nothing had
+happened).  In this assignment, we will use the Keyboard as the input
+device for interrupting the running program.<br><p> 
+
+The assignment consists of three parts: 
+
+    <p><br><b><u>The user program</u></b>.<p>
+      
+Your user program will consist of continually producing the "Texas checkerboard"
+by alternately outputing two different lines.  One line will consist of the
+pattern "Texas" followed by seven spaces four times. The second line will consist of the
+pattern seven spaces followed by "Texas" three times.
+
+<pre>
+Texas       Texas       Texas       Texas
+       Texas       Texas       Texas
+Texas       Texas       Texas       Texas
+       Texas       Texas       Texas
+Texas       Texas       Texas       Texas
+       Texas       Texas       Texas
+Texas       Texas       Texas       Texas
+
+</pre>
+
+To ensure the output on the screen is not too fast to be seen by the
+naked eye, the user program should include a piece of code that will
+count down from 2500 each time a line is output on the screen. A
+simple way to do this is with the following subroutine DELAY:
+
+<br><p> 
+<pre> 
+DELAY   ST  R1, SaveR1
+        LD  R1, COUNT
+REP     ADD R1,R1,#-1
+        BRp REP
+        LD  R1, SaveR1
+        RET
+COUNT   .FILL #2500
+SaveR1  .BLKW 1
+</pre>
+
+    <p><br><b><u>The keyboard interrupt service routine</u></b>.<p>
+The keyboard interrupt service routine will examine the key typed to see if
+it is a capital letter from the English alphabet (A,B,...Z).  If it is not,
+the service routine will simply terminate with an RTI. If it is, the
+interrupt service routine will, <b>starting on a new line on the screen</b>, print
+the capital letter typed ten times, followed by the lower case version of that
+letter ten times.  For example, if someone typed a G, the service routine would
+print to the screen:
+
+<pre>
+GGGGGGGGGGgggggggggg
+</pre>
+
+<b>The service routine would then print a line feed (0xA) to the screen</b>, and finally terminate with an RTI. 
+Your interrupt service routine should start at the location x1500.
+
+<br><p>
+
+<b>VERY IMPORTANT </b>instructions for constructing your interrupt service routine: 
+<ol>
+	<li> You may not use <b>any</b> TRAP instructions in your interrupt service routine. 
+	(However, you may use TRAP instructions as you wish in your user program.)
+	</li>
+	<li>	To display a character on the screen, you must poll the DSR before writing to the DDR.</li>
+</ol>
+	If you use TRAP in the interrupt service routine, or if you do not properly poll the DSR before writing to the DDR, your program is not correct and will fail our tests, even though it may appear to work when you test it.
+
+<p><b>Hint</b>: Don't forget to save and restore any registers that
+you use in the interrupt service routine.<br><p>
+ 
+<p><br><b><u>The operating system enabling code</u></b>.<p>
+      
+	  Unfortunately, we have not YET installed Windows or Linux on the LC-3, so
+	  we are going to have to ask you to do the following three enabling actions
+	  in your user program first, before your user program starts outputing the
+	  Texas checkerboard.  Normally, these would be done by the operating system.  <br><p>
+
+	  1. Normally, the operating system would have previously set up some stack
+	  space so that the PC and PSR can be pushed when an interrupt is encountered.
+	  (As you know, when the service routine executes RTI, both PC and PSR will be
+	  popped, returning the machine to the interrupted program.)  Since there is
+	  no operating system, please initialize R6 to x3000, indicating an empty stack.<br><p>
+	  
+	  2. Also, normally, the operating system establishes the interrupt vector
+	  table to contain the starting addresses of the corresponding interrupt
+	  service routines. You will have to do that for the keyboard interrupt. The
+	  starting address of the interrupt vector table is x0100 and the interrupt
+	  vector for the keyboard is x80. It is necessary for you to only provide
+	  the one entry in the interrupt vector table that is needed for this
+	  programming lab assignment.<br><p>
+	  
+	  3. Finally, normally, the operating system would set the IE bit of the KBSR.
+	  You will have to do that as well.<br><p>
+
+    <p><br><b><u>Your job</u></b>.<p>
+
+Your job will be to write both the user program augmented with the
+interrupt enabling code described above and the keyboard interrupt
+service routine.<br><p>
+
+The user program must be named <b>user_program.asm</b> and will be of the form:<br><p>
+<pre>
+                .ORIG    x3000
+                  --      ---     ; initialize the stack pointer
+                     ...
+                  --      ---
+                  --      ---     ; set up the keyboard interrupt vector table entry
+                     ...
+                  --      ---
+                  --      ---     ; enable keyboard interrupts
+                     ...
+                  --      ---     
+                  --      ---     ; start of actual user program to print Texas checkerboard
+                     ...
+                  --      ---
+                .END
+</pre>
+The interrupt service routine must be named <b>interrupt_service_routine.asm</b> and will be of the form:<br><p>
+<pre>
+                .ORIG     x1500
+                  --     ---      ; the code
+                     ...
+                  --     ---
+                 RTI
+                  --     ---      ; buffer space as required
+                      ...
+                  --     ---
+                .END	  
+</pre>
+     
+	 <p>We have provided a <a href="PA5_example.html">screenshot</a> as an
+	 example of how the console should look when you run the program.
+      
+    <p><b>Notes</b>:
+    <ul>
+		<li> The Linux LC-3 simulator does NOT include support for interrupts.
+		Therefore, you must use the <b> Windows LC-3 simulator</b> for this
+		assignment.</li>
+		<li>We suggest that to test your program, first load the interrupt
+		service routine, then the user program, and then execute.</li>
+		<li>Since your user program contains an infinite loop, to stop the
+		program, you must press the "Stop Execution" button in the
+		simulator.</li>
+		<li>You will submit two files for this lab, <b>user_program.asm</b> and
+		<b>interrupt_service_routine.asm</b>. </li>
+		<li>Submit your Programs: Follow the <a
+			href="../../Software/submission.html">submission instructions</a> for
+		uploading your user_program.asm and interrupt_service_routine.asm files
+		for grading. Be sure to submit your programs in the Project 5 directory
+		and verify your submission.</li>
+    </ul>
+    <br>
+    
+  </body>
+</html>
